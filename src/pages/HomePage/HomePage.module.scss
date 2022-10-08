@@ -1,0 +1,12 @@
+@import '../../assets/style';
+
+.homepage {
+  width: $cards-grid-width;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: nth($gaps, 3) / 2;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}

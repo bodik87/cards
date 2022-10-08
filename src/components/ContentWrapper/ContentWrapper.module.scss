@@ -1,0 +1,11 @@
+@import '../../assets/style';
+
+.contentWrapper {
+  max-width: $mainPage-max-width;
+  display: flex;
+  justify-content: center;
+  padding: nth($paddings, 5);
+  margin: nth($margins, 4) auto;
+  border-radius: nth($border-radiuses, 3);
+  background-color: $color-white;
+}

@@ -1,0 +1,76 @@
+@import '../../assets/style';
+
+.modal {
+  display: none;
+
+  &_isVisible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba($color-black, 0.5);
+    z-index: 2;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: nth($paddings, 5) * 1.5;
+    padding-bottom: nth($paddings, 5);
+    background: $color-white;
+    border-radius: nth($border-radiuses, 2);
+
+    @media (max-width: 445px) {
+      padding: nth($paddings, 4);
+    }
+  }
+
+  &_input {
+    width: $modal-input-width;
+    background: $color-cyan-1;
+    font-size: nth($font-sizes, 3);
+    color: $color-black;
+    padding: nth($paddings, 3);
+    border-radius: nth($border-radiuses, 1);
+    border: $input-border;
+    transition: $transition;
+    @extend %extend-input;
+
+    &:focus {
+      border: 4px solid $color-orange-1;
+    }
+
+    &::placeholder {
+      color: $color-blue-2;
+    }
+
+    @media (max-width: 445px) {
+      width: $modal-input-width * 0.9;
+      font-size: nth($font-sizes, 2);
+    }
+  }
+
+  &_btn {
+    cursor: pointer;
+    width: $modal-btn-size * 2;
+    height: $modal-btn-size;
+    border-radius: nth($border-radiuses, 1);
+    background: $color-orange-1;
+    margin-top: nth($margins, 4);
+    margin-left: nth($margins, 2);
+    font-size: nth($font-sizes, 1);
+    transition: $transition;
+    border: $input-border;
+    @extend %extend-input;
+
+    &:hover {
+      background: $color-orange-2;
+    }
+  }
+}

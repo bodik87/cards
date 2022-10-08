@@ -1,0 +1,19 @@
+@import '../../assets/style';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  border-radius: nth($border-radiuses, 2);
+
+
+  &_title {
+    font-weight: nth($font-weights, 2);
+    font-size: nth($font-sizes, 5);
+    transition: $transition;
+    user-select: none;
+    margin-bottom: nth($margins, 3);
+  }
+}

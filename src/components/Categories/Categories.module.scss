@@ -1,0 +1,13 @@
+@import '../../assets/style';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: nth($margins, 4);
+  gap: nth($gaps, 1);
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
