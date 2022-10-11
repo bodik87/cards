@@ -7,6 +7,7 @@ export const CategoryItem = ({
   onChange,
   onClick,
   onBlur,
+  color,
 }) => {
 
   return (
@@ -16,6 +17,7 @@ export const CategoryItem = ({
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      color={color}
     />
   );
 };

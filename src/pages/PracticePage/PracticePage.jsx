@@ -2,7 +2,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Content } from '../../components/Content'
-import { MINI_CARDS_PLACEHOLDER, PTACTICE_TEXTAREA_PLACEHOLDER } from '../../assets/constants'
+import { MINI_CARDS_PLACEHOLDER, PRACTICE_TEXTAREA_PLACEHOLDER } from '../../assets/constants'
 import { updateActiveValueAC } from '../../store/reducers/actions';
 import styles from './PracticePage.module.scss'
 import { Header } from '../../components/Header';
@@ -68,7 +68,7 @@ export const PracticePage = () => {
             value={practice}
             onChange={handleChangePracticeText}
             className={styles.textArea}
-            placeholder={PTACTICE_TEXTAREA_PLACEHOLDER}
+            placeholder={PRACTICE_TEXTAREA_PLACEHOLDER}
             onBlur={updateSelectedCategoryPractice}
           />
         </Content>

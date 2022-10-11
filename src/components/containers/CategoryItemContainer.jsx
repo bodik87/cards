@@ -5,6 +5,7 @@ import {
   updateActiveCategoryAC,
   updateCategoriesAC,
 } from "../../store/reducers/actions";
+import { getRandomColor } from "../../utils/getRandomColor";
 import { CategoryItem } from "../CategoryItem";
 
 export const CategoryItemContainer = ({ category, id, index }) => {
@@ -31,10 +32,13 @@ export const CategoryItemContainer = ({ category, id, index }) => {
   // Change active category
   const changeActiveCategory = (i) => !isAactive && dispatch(updateActiveCategoryAC(i))
 
+  const randomColor = getRandomColor()
+
   return (
     <CategoryItem
       isActive={isAactive}
       value={categoryName}
+      color={randomColor}
       onChange={handleChangeName}
       onClick={() => changeActiveCategory(index)}
       onBlur={changeCategoryName}
