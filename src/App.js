@@ -26,6 +26,18 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // useEffect(() => {
+  //   const data = api.getCards()
+  //   console.log(data);
+  //   const localActiveIndex = JSON.parse(localStorage.getItem("localActiveIndex"));
+  //   const actualActiveIndex = localActiveIndex || 0;
+  //   if (Array.isArray(data) && data.length > 0) {
+  //     dispatch(updateCategoriesAC(data));
+  //     dispatch(updateActiveCategoryAC(actualActiveIndex));
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
+
   const { categories } = useSelector(store => store.categoryList);
   const emptyCategories = categories.length > 0
 
