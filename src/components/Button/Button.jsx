@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
@@ -37,6 +37,11 @@ export const Button = ({
       </div>
     );
   }
+  // return (
+  //   <div onClick={onClick} className={buttonStyles}>
+  //     <p>{value}</p>
+  //   </div >
+  // );
   return (
     <div onClick={onClick} className={buttonStyles} style={color && { "border": `4px solid ${color}` }} >
       <p>{value}</p>

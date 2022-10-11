@@ -4,6 +4,7 @@ import { CATEGORY_ITEM_PLACEHOLDER } from "../../assets/constants";
 import {
   updateActiveCategoryAC,
   updateCategoriesAC,
+  updateActiveCategoryColorAC,
 } from "../../store/reducers/actions";
 import { getRandomColor } from "../../utils/getRandomColor";
 import { CategoryItem } from "../CategoryItem";
@@ -11,7 +12,7 @@ import { CategoryItem } from "../CategoryItem";
 export const CategoryItemContainer = ({ category, id, index }) => {
   // Store
   const dispatch = useDispatch();
-  const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
+  const { activeColor, categories, activeCategoryIndex } = useSelector(state => state.categoryList);
   const updateCategoryList = (arr, id, name) =>
     arr.map(el => el.id === id ? { ...el, name: name } : el);
   const isAactive = index === activeCategoryIndex
@@ -29,18 +30,23 @@ export const CategoryItemContainer = ({ category, id, index }) => {
     }
     // return cat.name
   };
-  // Change active category
-  const changeActiveCategory = (i) => !isAactive && dispatch(updateActiveCategoryAC(i))
 
+  // Change active category index and color
   const randomColor = getRandomColor()
+  const changeActiveCategory = (i, color) => {
+    if (!isAactive) {
+      dispatch(updateActiveCategoryAC(i))
+      dispatch(updateActiveCategoryColorAC(color))
+    }
+  }
 
   return (
     <CategoryItem
       isActive={isAactive}
       value={categoryName}
-      color={randomColor}
+      color={activeColor}
       onChange={handleChangeName}
-      onClick={() => changeActiveCategory(index)}
+      onClick={() => changeActiveCategory(index, randomColor)}
       onBlur={changeCategoryName}
       placeholder={CATEGORY_ITEM_PLACEHOLDER}
     />

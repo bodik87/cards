@@ -1,6 +1,7 @@
 export const UPDATE_CATEGORIES = "UPDATE_CATEGORIES";
 export const UPDATE_ACTIVE_CATEGORY = "UPDATE_ACTIVE_CATEGORY";
 export const UPDATE_ACTIVE_VALUE = "UPDATE_ACTIVE_PRACTICE";
+export const UPDATE_COLOR = "UPDATE_COLOR";
 
 export const updateCategoriesAC = (categories) => ({
   type: UPDATE_CATEGORIES,
@@ -18,6 +19,12 @@ export const updateActiveCategoryAC = (index) => ({
 
 export const updateActiveValueAC = (value) => ({
   type: UPDATE_ACTIVE_VALUE,
+  payload: {
+    value,
+  },
+});
+export const updateActiveCategoryColorAC = (value) => ({
+  type: UPDATE_COLOR,
   payload: {
     value,
   },
