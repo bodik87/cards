@@ -5,6 +5,8 @@ import { Content } from '../../components/Content'
 import { MINI_CARDS_PLACEHOLDER, PTACTICE_TEXTAREA_PLACEHOLDER } from '../../assets/constants'
 import { updateActiveValueAC } from '../../store/reducers/actions';
 import styles from './PracticePage.module.scss'
+import { Header } from '../../components/Header';
+import { Categories } from '../../components/Categories';
 
 export const PracticePage = () => {
   const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
@@ -12,6 +14,12 @@ export const PracticePage = () => {
 
   const [words, setWords] = useState([])
   const [practice, setPractice] = useState('')
+  const [title, setTitle] = useState('')
+
+  // Category title
+  useEffect(() => {
+    setTitle(categories[activeCategoryIndex]?.name)
+  }, [categories, activeCategoryIndex])
 
   useEffect(() => {
     setWords(categories[activeCategoryIndex]?.data)
@@ -43,21 +51,28 @@ export const PracticePage = () => {
   }
 
   return (
-    <Content title={'Practice'}>
-      <div className={styles.practice_miniCards}>
-        {words.map(el => <input
-          key={nanoid()} defaultValue={el}
-          disabled="disabled"
-          className={styles.practice_miniCard}
-          placeholder={MINI_CARDS_PLACEHOLDER} />)}
+    <div className={styles.practice}>
+      <Header />
+      <div className={styles.practice_wrapper}>
+        <Categories />
+        <Content>
+          <div className={styles.practice_title}>{`Practice with ${title}`}</div>
+          <div className={styles.practice_miniCards}>
+            {words.map(el => <input
+              key={nanoid()} defaultValue={el}
+              disabled="disabled"
+              className={styles.practice_miniCard}
+              placeholder={MINI_CARDS_PLACEHOLDER} />)}
+          </div>
+          <textarea
+            value={practice}
+            onChange={handleChangePracticeText}
+            className={styles.textArea}
+            placeholder={PTACTICE_TEXTAREA_PLACEHOLDER}
+            onBlur={updateSelectedCategoryPractice}
+          />
+        </Content>
       </div>
-      <textarea
-        value={practice}
-        onChange={handleChangePracticeText}
-        className={styles.textArea}
-        placeholder={PTACTICE_TEXTAREA_PLACEHOLDER}
-        onBlur={updateSelectedCategoryPractice}
-      />
-    </Content>
+    </div>
   )
 }

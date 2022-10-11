@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Content } from '../../components/Content'
 import { Card } from '../../components/Card'
 import { useSelector } from 'react-redux'
-import styles from './HomePage.module.scss'
 import { nanoid } from '@reduxjs/toolkit'
+import { Header } from '../../components/Header'
+import { Categories } from '../../components/Categories'
+import styles from './HomePage.module.scss'
 
 export const HomePage = () => {
   // Store
   const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
-  const [title, setTitle] = useState('')
+
   const [words, setWords] = useState([])
   const [translates, setTranslates] = useState([])
+  const [title, setTitle] = useState('')
 
   // Category title
   useEffect(() => {
@@ -28,15 +31,22 @@ export const HomePage = () => {
   }, [categories, activeCategoryIndex])
 
   return (
-    <Content title={title}>
-      <div className={styles.homepage}>
-        {words.map((el, i) => <Card
-          key={nanoid()}
-          words={words}
-          translates={translates}
-          index={i}
-        />)}
+    <div className={styles.homepage}>
+      <Header />
+      <div className={styles.homepage_wrapper}>
+        <Categories />
+        <Content>
+          <div className={styles.homepage_title}>{title}</div>
+          <div className={styles.homepage_cards}>
+            {words.map((el, i) => <Card
+              key={nanoid()}
+              words={words}
+              translates={translates}
+              index={i}
+            />)}
+          </div>
+        </Content>
       </div>
-    </Content>
+    </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CategoryItem.module.scss";
+import { Button } from "../Button";
 
 export const CategoryItem = ({
   isActive,
@@ -9,15 +9,12 @@ export const CategoryItem = ({
   onBlur,
 }) => {
 
-  const categoryInputStyles = isActive ? styles.categoryInput : styles.categoryInput_active;
-
   return (
-
-    <input
-      className={categoryInputStyles}
+    <Button
+      isActive={isActive}
+      onClick={onClick}
       value={value}
       onChange={onChange}
-      onClick={onClick}
       onBlur={onBlur}
     />
   );

@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { VC_ITEM_HEIGHT, BURGER_VC_MAX_ITEMS_COUNT, ADD_CATEGORY } from '../../assets/constants'
 import { Logo } from '../../components/SVG'
 import { path } from '../../path'
 import { Burger } from '../Burger'
-import { Button } from '../Button'
+import { Button, ButtonType } from '../Button'
 import { Modal } from '../Modal'
 import { VerticalCarousel } from '../VerticalCarousel'
 
@@ -13,6 +13,8 @@ import styles from './Header.module.scss'
 
 
 export const Header = () => {
+  // Store
+  const { categories } = useSelector(state => state.categoryList);
 
   // Location
   const location = useLocation()
@@ -26,16 +28,15 @@ export const Header = () => {
   const [modalView, setModalView] = useState(false);
   const toggleModalView = () => setModalView(!modalView)
 
-  // Categories
-  const { categories } = useSelector(store => store.categoryList);
-
-
   return (
     <>
       <Modal onClick={toggleModalView} isVisible={modalView} />
       <div className={styles.header}>
         <Link to={path.home}><Logo className={styles.categories_logo} /></Link>
-        <Burger onClick={toggleBurgerMenu} />
+        <div className={styles.header_rowBtns}>
+          <Link to={path.practice}>{showPracticeButton && <Button value={'Practice'} />}</Link>
+          <Burger onClick={toggleBurgerMenu} />
+        </div>
         <div className={burgerMenuStyles}>
           <VerticalCarousel
             itemsArray={categories}
@@ -43,8 +44,10 @@ export const Header = () => {
             maxItemsCount={BURGER_VC_MAX_ITEMS_COUNT}
           />
           <div className={styles.header_btns}>
-            <Button value={ADD_CATEGORY} onClick={toggleModalView} />
-            <Link to={path.practice}>{showPracticeButton && <Button value={'Practice'} />}</Link>
+            <Button
+              type={ButtonType.BLANK}
+              value={ADD_CATEGORY}
+              onClick={toggleModalView} />
           </div>
         </div>
       </div>

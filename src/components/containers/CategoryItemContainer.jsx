@@ -13,7 +13,7 @@ export const CategoryItemContainer = ({ category, id, index }) => {
   const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
   const updateCategoryList = (arr, id, name) =>
     arr.map(el => el.id === id ? { ...el, name: name } : el);
-  const isUnactive = index !== activeCategoryIndex
+  const isAactive = index === activeCategoryIndex
 
   // Change category name
   const [categoryName, setCategoryName] = useState(category.name);
@@ -21,17 +21,19 @@ export const CategoryItemContainer = ({ category, id, index }) => {
     setCategoryName(e.target.value);
   }
   const changeCategoryName = () => {
+    // if (categoryName.length !== 0)
     if (category.name !== categoryName) {
       const updatedCategoryList = updateCategoryList(categories, id, categoryName);
       dispatch(updateCategoriesAC(updatedCategoryList));
     }
+    // return cat.name
   };
   // Change active category
-  const changeActiveCategory = (i) => isUnactive && dispatch(updateActiveCategoryAC(i))
+  const changeActiveCategory = (i) => !isAactive && dispatch(updateActiveCategoryAC(i))
 
   return (
     <CategoryItem
-      isActive={isUnactive}
+      isActive={isAactive}
       value={categoryName}
       onChange={handleChangeName}
       onClick={() => changeActiveCategory(index)}

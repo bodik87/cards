@@ -11,9 +11,13 @@ export const Card = ({ words, translates, index }) => {
   const dispatch = useDispatch()
 
   // Cart side
+  // isBackSideShown // rotateCard !!
   const [frontCardSide, setFrontCardSide] = useState(true)
   const changeFrontCardSide = () => {
+    //setisEditing(true)
+    // if (если есть слово - переворачивается, !isEditing && corner отображается )
     setFrontCardSide(!frontCardSide)
+
     setEdit(!edit)
     setSave(save)
   }
@@ -68,12 +72,12 @@ export const Card = ({ words, translates, index }) => {
   const [edit, setEdit] = useState(true)
   const [save, setSave] = useState(false)
 
-  const handleEdit = (ref) => {
+  const handleEdit = () => {
     setDisabled(!disabled)
     setEdit(!edit)
     setSave(!save)
   };
-  const handleSave = (ref) => {
+  const handleSave = () => {
     setDisabled(!disabled)
     setSave(!save)
     updateSelectedWords()
@@ -82,9 +86,10 @@ export const Card = ({ words, translates, index }) => {
 
   useEffect(() => {
     if (!disabled) {
-      wordRef.current.focus();;
+      wordRef.current.focus();
     }
   }, [disabled]);
+
 
   const editStyle = edit ? styles.test1 : styles.test1_disable
   const saveStyle = save ? styles.test2 : styles.test2_disable
@@ -97,6 +102,40 @@ export const Card = ({ words, translates, index }) => {
       </div>
 
 
+      {/*  
+
+      <card>...</card>
+
+      const Card = ({children}) => {
+    isBackSideShown ? 
+
+<div className='input' >
+    <input ref>town</input>
+  </div>
+    : 
+
+  <blaaaa/>
+  // продумать, чтоб они не дублировались
+  <div className='controls'>
+    conditions && edit
+    conditions && rotate
+  </div>
+      }
+
+
+      <Card cardContent=    isBackSideShown ? 
+
+<div className='input' >
+    <input ref>town</input>
+  </div>
+    : 
+
+  <blaaaa/>>
+
+</Card>
+
+*/}
+
       <div
         className={editStyle}
         onClick={() => handleEdit(wordRef)}>Edit</div>
@@ -108,7 +147,6 @@ export const Card = ({ words, translates, index }) => {
       <input
         ref={wordRef}
         disabled={disabled}
-
         value={wordValue}
         onChange={handleChangeFrontWord}
         className={cardIsActive}

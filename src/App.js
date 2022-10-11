@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Categories } from './components/Categories';
-import { ContentWrapper } from './components/ContentWrapper';
+import { Wrapper } from './components/Wrapper';
 import { EmptyCategories } from './components/EmptyCategories';
 import { HomePage } from './pages/HomePage';
 import { PracticePage } from './pages/PracticePage';
 import { updateActiveCategoryAC, updateCategoriesAC } from './store/reducers/actions';
 import { api } from './api';
 import { path } from './path';
+import { Notfoundpage } from './pages/Notfoundpage';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,18 +43,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ContentWrapper>
+      <Wrapper>
         {emptyCategories ?
-          <>
-            <Categories />
-            <Routes>
-              <Route path={path.home} element={<HomePage />} />
-              <Route path={path.practice} element={<PracticePage />} />
-            </Routes>
-          </> :
-          <EmptyCategories />
-        }
-      </ContentWrapper>
+          <Routes>
+            <Route path={path.home} element={<HomePage />} />
+            <Route path={path.practice} element={<PracticePage />} />
+            <Route path="*" element={<Notfoundpage />} />
+          </Routes> :
+          <EmptyCategories />}
+      </Wrapper>
     </BrowserRouter>
   );
 }
