@@ -77,6 +77,7 @@ export const Card = ({ words, translates, index }) => {
               className={styles.cardModal_wordInput}
               value={wordValue}
               onChange={wordInputProps.onChange}
+              placeholder={ADD_NEW_WORD}
             />
           </div>
           <div className={styles.cardModal_wordInputWrapper}>
@@ -85,6 +86,7 @@ export const Card = ({ words, translates, index }) => {
               className={styles.cardModal_translateInput}
               value={translateValue}
               onChange={translateInputProps.onChange}
+              placeholder={ADD_TRANSLATE}
 
             />
           </div>
@@ -120,7 +122,7 @@ export const Card = ({ words, translates, index }) => {
             disabled
             readOnly
             value={translateValue}
-            className={styles.card_wordValue}
+            className={styles.card_translateValue}
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>

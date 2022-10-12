@@ -1,8 +1,15 @@
 @import '../../assets/style';
 
 .categoryTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-weight: nth($font-weights, 2);
   font-size: nth($font-sizes, 5);
   transition: $transition;
   user-select: none;
+
+  @media (max-width: 992px) {
+    margin-bottom: 16px;
+  }
 }

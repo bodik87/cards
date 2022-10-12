@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
+import { BiEditAlt } from 'react-icons/bi'
 import styles from './CategoryTitle.module.scss'
 
 export const CategoryTitle = () => {
@@ -11,6 +12,6 @@ export const CategoryTitle = () => {
   }, [categories, activeCategoryIndex])
 
   return (
-    <div className={styles.categoryTitle}>{title}</div>
+    <div className={styles.categoryTitle}>{title} <BiEditAlt color={'black'} /></div>
   )
 }

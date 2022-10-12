@@ -34,10 +34,11 @@ export const Header = () => {
       <Modal onClick={toggleModalView} isVisible={modalView} />
       <div className={styles.header}>
         <Link to={path.home}><AnimatedLogo /></Link>
-        <div className={styles.header_categoryTitle}>
-          <CategoryTitle />
-        </div>
+
         <div className={styles.header_rowBtns}>
+          <div className={styles.header_categoryTitle}>
+            <CategoryTitle />
+          </div>
           <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.PRACTICE} />}</Link>
           <Burger onClick={toggleBurgerMenu} />
         </div>

@@ -19,17 +19,26 @@
   border: $input-border;
   font-weight: nth($font-weights, 2);
 
-  &::placeholder {
-    color: $color-blue-2;
-  }
-
-  &_wordValue {
+  &_wordValue,
+  &_translateValue {
     background: none;
     border: none;
     font-size: nth($font-sizes, 4);
     color: $color-black;
     @extend %extend-text-ellipsis;
     @extend %extend-input;
+
+    &::placeholder {
+      font-size: nth($font-sizes, 3);
+      color: $color-blue-2;
+    }
+  }
+
+  &_translateValue {
+    &::placeholder {
+      font-size: nth($font-sizes, 3);
+      color: $color-orange-3;
+    }
   }
 
   &_btnsWrapper {
@@ -101,7 +110,7 @@
   &_wordInput,
   &_translateInput {
     width: 250px;
-    padding: 8px nth($paddings, 2);
+    padding: 12px nth($paddings, 2);
     border-radius: nth($border-radiuses, 2);
     transition: $card-transition;
     font-size: nth($font-sizes, 3);
@@ -109,14 +118,26 @@
     margin-bottom: 8px;
     @extend %extend-input;
     @extend %extend-text-ellipsis;
+
+    &::placeholder {
+      font-size: nth($font-sizes, 2);
+    }
   }
 
   &_wordInput {
     border: 2px solid $color-blue-1;
+
+    &::placeholder {
+      color: $color-blue-2;
+    }
   }
 
   &_translateInput {
     border: 2px solid $color-orange-1;
+
+    &::placeholder {
+      color: $color-orange-1;
+    }
   }
 
   &_wordInputWrapper {
