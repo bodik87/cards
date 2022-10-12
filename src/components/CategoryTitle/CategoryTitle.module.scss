@@ -15,6 +15,7 @@
     background: none;
     border: none;
     color: $color-black;
+    margin-right: 12px;
     @extend %extend-text-ellipsis;
     @extend %extend-input;
   }

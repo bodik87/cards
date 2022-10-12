@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { VC_ITEM_HEIGHT, BURGER_VC_MAX_ITEMS_COUNT, ADD_CATEGORY, PRACTICE } from '../../assets/constants'
@@ -39,7 +39,7 @@ export const Header = () => {
           <div className={styles.header_categoryTitle}>
             <CategoryTitle />
           </div>
-          <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.PRACTICE} />}</Link>
+          <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.ORANGE} />}</Link>
           <Burger onClick={toggleBurgerMenu} />
         </div>
         <div className={burgerMenuStyles}>

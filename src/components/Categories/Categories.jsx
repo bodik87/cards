@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { VerticalCarousel } from '../VerticalCarousel'
 import { Modal } from "../Modal";
-import { Button } from '../Button'
+import { Button, ButtonType } from '../Button'
 import { ADD_CATEGORY, VC_ITEM_HEIGHT, VC_MAX_ITEMS_COUNT } from '../../assets/constants'
 import styles from './Categories.module.scss'
 import { updateActiveCategoryAC, updateCategoriesAC } from '../../store/reducers/actions';
@@ -45,7 +45,11 @@ export const Categories = () => {
           itemHeight={VC_ITEM_HEIGHT}
           maxItemsCount={VC_MAX_ITEMS_COUNT}
         />
-        <Button value={ADD_CATEGORY} onClick={toggleModalVisible} />
+        <Button
+          value={ADD_CATEGORY}
+          type={ButtonType.UNACTIVE}
+          onClick={toggleModalVisible}
+        />
       </div>
     </>
   )

@@ -5,7 +5,7 @@ import styles from "./Button.module.scss";
 export const ButtonType = {
   ICON_RIGHT: 'IconRight',
   ICON_LEFT: 'IconLeft',
-  PRACTICE: 'Practice',
+  ORANGE: 'Practice',
   UNACTIVE: 'Unactive'
 };
 
@@ -34,7 +34,7 @@ export const Button = ({
         {icon}
       </div>
     );
-  } else if (type === ButtonType.PRACTICE) {
+  } else if (type === ButtonType.ORANGE) {
     return (
       <div onClick={onClick} className={styles.button_practice}>
         <p>{value}</p>

@@ -21,6 +21,7 @@
 
   &_wordValue,
   &_translateValue {
+    flex-grow: 1;
     background: none;
     border: none;
     font-size: nth($font-sizes, 4);
@@ -42,6 +43,7 @@
   }
 
   &_btnsWrapper {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,114 +74,5 @@
   &_active {
     @extend .cardTranslate;
     transform: rotateY(360deg);
-  }
-}
-
-.cardModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba($color-black, 0.5);
-  z-index: 1;
-
-  &_unactive {
-    display: none;
-  }
-
-  &_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: nth($paddings, 5) * 1.5;
-    padding-bottom: nth($paddings, 5);
-    background: $color-white;
-    border-radius: nth($border-radiuses, 2);
-
-    @media (max-width: 445px) {
-      padding: nth($paddings, 4);
-    }
-  }
-
-  &_wordInput,
-  &_translateInput {
-    width: 250px;
-    padding: 12px nth($paddings, 2);
-    border-radius: nth($border-radiuses, 2);
-    transition: $card-transition;
-    font-size: nth($font-sizes, 3);
-    color: $color-gray-3;
-    margin-bottom: 8px;
-    @extend %extend-input;
-    @extend %extend-text-ellipsis;
-
-    &::placeholder {
-      font-size: nth($font-sizes, 2);
-    }
-  }
-
-  &_wordInput {
-    border: 2px solid $color-blue-1;
-
-    &::placeholder {
-      color: $color-blue-2;
-    }
-  }
-
-  &_translateInput {
-    border: 2px solid $color-orange-1;
-
-    &::placeholder {
-      color: $color-orange-1;
-    }
-  }
-
-  &_wordInputWrapper {
-    position: relative;
-  }
-
-  &_wordInputLable {
-    position: absolute;
-    top: -10%;
-    left: 8%;
-    background: white;
-    padding: 0 4px;
-    font-size: 12px;
-  }
-
-  &_btnSave,
-  &_btnEdit {
-    cursor: pointer;
-    width: $modal-btn-size * 2;
-    padding: 8px;
-    border-radius: nth($border-radiuses, 1);
-    margin: 2px;
-    font-size: nth($font-sizes, 1);
-    transition: $transition;
-    border: $input-border;
-    @extend %extend-input;
-
-  }
-
-  &_btnSave {
-    background: $color-orange-1;
-
-    &:hover {
-      background: $color-orange-2;
-    }
-  }
-
-  &_btnEdit {
-    background: $color-blue-1;
-
-    &:hover {
-      background: $color-blue-2;
-    }
   }
 }

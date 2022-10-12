@@ -1,46 +1,38 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from '../../assets/constants'
-import styles from './Modal.module.scss'
+import styles from './ModalDoubleInput.module.scss'
 
-/* !!! Add this 2 variables to parents Component:
-
-const [modalVisible, setModalVisible] = useState(false);
-const toggleModalVisible = () => setModalVisible(!modalVisible)
-
-*/
-
-export const Modal = ({
-  modalTitle = '',
-  visible = false,
-  toggleModalVisible = null,
-  func = null,
-  payload = ''
+export const ModalDoubleInput = ({
+  modalTitle,
+  visible,
+  toggleModalVisible,
+  func,
+  payload1 = '',
+  payload2 = ''
 }) => {
 
-  const [inputText, setInputText] = useState('')
+  const [inputText1, setInputText1] = useState('')
+  const [inputText2, setInputText2] = useState('')
 
   useEffect(() => {
-    setInputText(payload)
+    setInputText1(payload1)
+    setInputText2(payload2)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  const mainFunction = (text) => {
-    if (text.trim().length > 0) {
-      func(text.trim())
-      toggleModalVisible()
-    }
-    else toggleModalVisible()
+  const mainFunction = (text1, text2) => {
+    func(text1.trim(), text2.trim())
+    toggleModalVisible()
   }
 
   const closeModal = () => {
     toggleModalVisible()
-    setInputText('');
+    setInputText1('');
+    setInputText2('');
   }
 
-  const avoidEmptyClick = (e) => {
-    e.stopPropagation()
-  }
+  const avoidEmptyClick = e => e.stopPropagation()
 
   const modalStyles = !visible ? styles.modal : styles.modal_isVisible;
 
@@ -55,13 +47,20 @@ export const Modal = ({
 
         <input
           className={styles.modal_input}
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          value={inputText1}
+          onChange={(e) => setInputText1(e.target.value)}
+          placeholder={MODAL_INPUT_PLACEHOLDER}
+        />
+
+        <input
+          className={styles.modal_input}
+          value={inputText2}
+          onChange={(e) => setInputText2(e.target.value)}
           placeholder={MODAL_INPUT_PLACEHOLDER}
         />
 
         <button
-          onClick={() => mainFunction(inputText)}
+          onClick={() => mainFunction(inputText1, inputText2)}
           className={styles.modal_btnOk}>{ADD}
         </button>
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from '../../assets/constants'
-import styles from './Modal.module.scss'
+import { CLOSE, DELETE_CATEGORY, DELETE_CATEGORY_CONFIRMATION } from '../../assets/constants'
+import styles from './ModalDelete.module.scss'
 
 /* !!! Add this 2 variables to parents Component:
 
@@ -10,7 +10,7 @@ const toggleModalVisible = () => setModalVisible(!modalVisible)
 
 */
 
-export const Modal = ({
+export const ModalDelete = ({
   modalTitle = '',
   visible = false,
   toggleModalVisible = null,
@@ -25,12 +25,9 @@ export const Modal = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  const mainFunction = (text) => {
-    if (text.trim().length > 0) {
-      func(text.trim())
-      toggleModalVisible()
-    }
-    else toggleModalVisible()
+  const mainFunction = () => {
+    func()
+    toggleModalVisible()
   }
 
   const closeModal = () => {
@@ -47,23 +44,13 @@ export const Modal = ({
   return (
     <div className={modalStyles} onClick={closeModal}>
       <div className={styles.modal_content} onClick={avoidEmptyClick}>
+        <p className={styles.modal_headerTitle}>{modalTitle}</p>
+        <p className={styles.modal_headerDescr}>{DELETE_CATEGORY_CONFIRMATION}</p>
 
-        <div className={styles.modal_header}>
-          <label className={styles.modal_headerTitle}>{modalTitle}</label>
+        <div className={styles.modal_btns}>
           <button className={styles.modal_btnClose} onClick={closeModal}>{CLOSE}</button>
+          <button onClick={() => mainFunction(inputText)} className={styles.modal_btnOk}>{DELETE_CATEGORY}</button>
         </div>
-
-        <input
-          className={styles.modal_input}
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder={MODAL_INPUT_PLACEHOLDER}
-        />
-
-        <button
-          onClick={() => mainFunction(inputText)}
-          className={styles.modal_btnOk}>{ADD}
-        </button>
 
       </div>
     </div>
