@@ -67,10 +67,14 @@ export const Card = ({ words, translates, index }) => {
     placeholder: ADD_TRANSLATE
   }
 
+  const avoidEmptyClick = (e) => {
+    e.stopPropagation()
+  }
+
   return (
     <>
-      <div className={modalStyles}>
-        <div className={styles.cardModal_content}>
+      <div className={modalStyles} onClick={toggleModalView}>
+        <div className={styles.cardModal_content} onClick={avoidEmptyClick}>
           <div className={styles.cardModal_wordInputWrapper}>
             <label className={styles.cardModal_wordInputLable}>Word</label>
             <input

@@ -1,13 +1,28 @@
 @import '../../assets/style';
 
 .categoryTitle {
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: nth($font-weights, 2);
-  font-size: nth($font-sizes, 5);
   transition: $transition;
   user-select: none;
+
+  &_input {
+    text-align: right;
+    font-weight: nth($font-weights, 2);
+    font-size: nth($font-sizes, 5);
+    background: none;
+    border: none;
+    font-size: nth($font-sizes, 5);
+    color: $color-black;
+    @extend %extend-text-ellipsis;
+    @extend %extend-input;
+
+    &:focus {
+      color: $color-orange-3;
+    }
+  }
 
   @media (max-width: 992px) {
     margin-bottom: 16px;
