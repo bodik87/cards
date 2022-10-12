@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ADD_NEW_WORD, ADD_TRANSLATE, CLOSE, EDIT, SAVE } from '../../assets/constants'
+import { ADD_NEW_WORD, ADD_TRANSLATE, CLOSE, SAVE } from '../../assets/constants'
 import { updateActiveValueAC } from '../../store/reducers/actions'
+import { MdOutlineFlipCameraAndroid } from 'react-icons/md'
+import { BiEditAlt } from 'react-icons/bi'
 import styles from './Card.module.scss'
 
 export const Card = ({ words, translates, index }) => {
@@ -101,14 +103,32 @@ export const Card = ({ words, translates, index }) => {
 
       <div className={styles.cardWrapper}>
         <div className={cardIsActive}>
-          {wordValue}
-          <div className={styles.cardCorner} onClick={changeFrontCardSide} />
-          <div className={styles.edit} onClick={toggleModalView}>{EDIT}</div>
+          <input
+            disabled
+            readOnly
+            value={wordValue}
+            className={styles.card_wordValue}
+            placeholder={ADD_NEW_WORD}
+          />
+          <div className={styles.card_btnsWrapper}>
+            <MdOutlineFlipCameraAndroid onClick={changeFrontCardSide} color={'#738899'} />
+            <BiEditAlt onClick={toggleModalView} color={'#738899'} />
+          </div>
         </div>
         <div className={cardTranslateIsActive}>
-          {translateValue}
-          <div className={styles.cardCorner} onClick={changeFrontCardSide} />
+          <input
+            disabled
+            readOnly
+            value={translateValue}
+            className={styles.card_wordValue}
+            placeholder={ADD_TRANSLATE}
+          />
+          <div className={styles.card_btnsWrapper}>
+            <MdOutlineFlipCameraAndroid onClick={changeFrontCardSide} color={'#e49a34'} />
+            <BiEditAlt onClick={toggleModalView} color={'#e49a34'} />
+          </div>
         </div>
+
       </div>
     </>
   )

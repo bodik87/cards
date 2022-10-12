@@ -2,36 +2,45 @@
 
 .cardWrapper {
   height: $card-wrapper-height;
-  // width: 300px;
-  position: relative;
   perspective: $card-wrapper-perspective;
 }
 
 .card,
 .cardTranslate {
+  display: flex;
+  justify-content: space-between;
   position: absolute;
   inset: 0px 0px 0px 0px;
-  padding: (nth($paddings, 2) * 2) (nth($paddings, 2) * 2);
+  padding: 8px;
   border-radius: nth($border-radiuses, 2);
   backface-visibility: hidden;
   transition: $card-transition;
-  font-size: nth($font-sizes, 3);
-  color: $color-gray-3;
+  font-size: nth($font-sizes, 4);
   border: $input-border;
-  @extend %extend-input;
-  @extend %extend-text-ellipsis;
+  font-weight: nth($font-weights, 2);
 
   &::placeholder {
     color: $color-blue-2;
+  }
+
+  &_wordValue {
+    background: none;
+    border: none;
+    font-size: nth($font-sizes, 4);
+    color: $color-black;
+    @extend %extend-text-ellipsis;
+    @extend %extend-input;
+  }
+
+  &_btnsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 
 .card {
   background: $color-blue-1;
-
-  &:focus {
-    border: 4px solid $color-orange-2;
-  }
 
   &_active {
     @extend .card;
@@ -39,7 +48,6 @@
   }
 }
 
-// поднять к контейнеру карточке вверх
 .cardTranslate {
   background: $color-orange-1;
   transform: rotateY(180deg);
@@ -55,55 +63,6 @@
   &_active {
     @extend .cardTranslate;
     transform: rotateY(360deg);
-  }
-}
-
-.cardCorner {
-  cursor: pointer;
-  position: absolute;
-  width: $cardCorner-size;
-  height: $cardCorner-size;
-  right: nth($margins, 3);
-  bottom: nth($margins, 3);
-  background: rgba($color: rgb(0, 0, 0), $alpha: 0.1);
-  border-radius: nth($border-radiuses, 1);
-  transition: $transition;
-  z-index: 1;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-.edit {
-  cursor: pointer;
-  position: absolute;
-  text-align: center;
-  padding: 2px 12px;
-  left: nth($margins, 3);
-  bottom: nth($margins, 3);
-  background: $color-blue-2;
-  border-radius: 12px;
-  z-index: 2;
-
-  &_disable {
-    display: none;
-  }
-}
-
-.save {
-  cursor: pointer;
-  position: absolute;
-  text-align: center;
-  padding: 2px 12px;
-  left: nth($margins, 3);
-  bottom: nth($margins, 3);
-  background: $color-orange-2;
-  border-radius: 12px;
-  z-index: 2;
-
-  &_disable {
-    display: none;
   }
 }
 
