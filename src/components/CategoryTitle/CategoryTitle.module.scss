@@ -1,0 +1,8 @@
+@import '../../assets/style';
+
+.categoryTitle {
+  font-weight: nth($font-weights, 2);
+  font-size: nth($font-sizes, 5);
+  transition: $transition;
+  user-select: none;
+}

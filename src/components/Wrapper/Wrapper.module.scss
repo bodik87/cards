@@ -6,4 +6,11 @@
   margin: nth($margins, 4) auto;
   border-radius: nth($border-radiuses, 3);
   background-color: $color-white;
+
+  @media (max-width: 445px) {
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    padding: nth($paddings, 3);
+  }
 }

@@ -10,11 +10,19 @@
     width: 100%;
   }
 
+  &_categoryTitle {
+    display: none;
+  }
+
   &_title {
     font-weight: nth($font-weights, 2);
     font-size: nth($font-sizes, 5);
     transition: $transition;
     user-select: none;
+
+    @media (max-width: 480px) {
+      font-size: nth($font-sizes, 3);
+    }
   }
 
   &_miniCards {
@@ -31,6 +39,7 @@
   }
 
   &_miniCard {
+    width: 100%;
     border-radius: nth($border-radiuses, 1);
     background-color: $color-blue-1;
     text-align: center;
@@ -47,6 +56,12 @@
     @media (max-width: 480px) {
       border-radius: nth($border-radiuses, 1);
       font-size: nth($font-sizes, 1);
+    }
+  }
+
+  @media (max-width: 992px) {
+    &_categoryTitle {
+      display: block;
     }
   }
 }

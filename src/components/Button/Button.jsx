@@ -18,7 +18,6 @@ export const Button = ({
   value
 }) => {
 
-  console.log(color);
   const buttonStyles = !isActive ? styles.button : styles.button_active;
 
   if (type === ButtonType.ICON_LEFT) {

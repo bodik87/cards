@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { VC_ITEM_HEIGHT, BURGER_VC_MAX_ITEMS_COUNT, ADD_CATEGORY, PRACTICE } from '../../assets/constants'
@@ -6,6 +6,7 @@ import { path } from '../../path'
 import { Burger } from '../Burger'
 import { Button, ButtonType } from '../Button'
 import { Modal } from '../Modal'
+import { CategoryTitle } from '../CategoryTitle'
 import { AnimatedLogo } from '../SVG/AnimatedLogo/AnimatedLogo'
 import { VerticalCarousel } from '../VerticalCarousel'
 
@@ -33,7 +34,9 @@ export const Header = () => {
       <Modal onClick={toggleModalView} isVisible={modalView} />
       <div className={styles.header}>
         <Link to={path.home}><AnimatedLogo /></Link>
-
+        <div className={styles.header_categoryTitle}>
+          <CategoryTitle />
+        </div>
         <div className={styles.header_rowBtns}>
           <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.PRACTICE} />}</Link>
           <Burger onClick={toggleBurgerMenu} />

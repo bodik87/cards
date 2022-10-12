@@ -7,6 +7,7 @@ import { updateActiveValueAC } from '../../store/reducers/actions';
 import styles from './PracticePage.module.scss'
 import { Header } from '../../components/Header';
 import { Categories } from '../../components/Categories';
+import { CategoryTitle } from '../../components/CategoryTitle';
 
 export const PracticePage = () => {
   const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
@@ -14,12 +15,6 @@ export const PracticePage = () => {
 
   const [words, setWords] = useState([])
   const [practice, setPractice] = useState('')
-  const [title, setTitle] = useState('')
-
-  // Category title
-  useEffect(() => {
-    setTitle(categories[activeCategoryIndex]?.name)
-  }, [categories, activeCategoryIndex])
 
   useEffect(() => {
     setWords(categories[activeCategoryIndex]?.data)
@@ -56,7 +51,9 @@ export const PracticePage = () => {
       <div className={styles.practice_wrapper}>
         <Categories />
         <Content>
-          <div className={styles.practice_title}>{`Practice with ${title}`}</div>
+          <div className={styles.practice_categoryTitle}>
+            <CategoryTitle />
+          </div>
           <div className={styles.practice_miniCards}>
             {words.map(el => <input
               key={nanoid()} defaultValue={el}

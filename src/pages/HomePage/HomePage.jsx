@@ -6,6 +6,7 @@ import { nanoid } from '@reduxjs/toolkit'
 import { Header } from '../../components/Header'
 import { Categories } from '../../components/Categories'
 import styles from './HomePage.module.scss'
+import { CategoryTitle } from '../../components/CategoryTitle/CategoryTitle'
 
 export const HomePage = () => {
   // Store
@@ -13,12 +14,6 @@ export const HomePage = () => {
 
   const [words, setWords] = useState([])
   const [translates, setTranslates] = useState([])
-  const [title, setTitle] = useState('')
-
-  // Category title
-  useEffect(() => {
-    setTitle(categories[activeCategoryIndex]?.name)
-  }, [categories, activeCategoryIndex])
 
   // Words array
   useEffect(() => {
@@ -36,7 +31,9 @@ export const HomePage = () => {
       <div className={styles.homepage_wrapper}>
         <Categories />
         <Content>
-          <div className={styles.homepage_title}>{title}</div>
+          <div className={styles.homepage_categoryTitle}>
+            <CategoryTitle />
+          </div>
           <div className={styles.homepage_cards}>
             {words.map((el, i) => <Card
               key={nanoid()}

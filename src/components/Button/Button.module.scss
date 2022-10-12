@@ -43,6 +43,12 @@
   &:hover {
     background: $color-orange-2;
   }
+
+  @media (max-width: 445px) {
+    width: 100px;
+    font-size: nth($font-sizes, 1);
+
+  }
 }
 
 .button_unactive {
