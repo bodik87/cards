@@ -1,3 +1,4 @@
+export const LOGO_TITLE = 'CARDS'
 export const ADD_CATEGORY = 'Add category'
 export const ADD_NEW_WORD = 'Add new word...'
 export const ADD_TRANSLATE = 'Add translate...'

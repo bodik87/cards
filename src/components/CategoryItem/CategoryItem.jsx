@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../Button";
+import { Button, ButtonType } from "../Button";
 
 export const CategoryItem = ({
   isActive,
@@ -11,13 +11,24 @@ export const CategoryItem = ({
 }) => {
 
   return (
-    <Button
-      isActive={isActive}
-      onClick={onClick}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      color={color}
-    />
+    <>
+      {isActive ?
+        <Button
+          isActive={isActive}
+          onClick={onClick}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          color={color}
+        />
+        :
+        <Button
+          type={ButtonType.UNACTIVE}
+          onClick={onClick}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        />}
+    </>
   );
 };

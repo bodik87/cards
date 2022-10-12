@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-export const ButtonType = { ICON_RIGHT: 'IconRight', ICON_LEFT: 'IconLeft', PRACTICE: 'Practice' };
+export const ButtonType = {
+  ICON_RIGHT: 'IconRight',
+  ICON_LEFT: 'IconLeft',
+  PRACTICE: 'Practice',
+  UNACTIVE: 'Unactive'
+};
 
 export const Button = ({
   isActive,
@@ -13,6 +18,7 @@ export const Button = ({
   value
 }) => {
 
+  console.log(color);
   const buttonStyles = !isActive ? styles.button : styles.button_active;
 
   if (type === ButtonType.ICON_LEFT) {
@@ -36,14 +42,15 @@ export const Button = ({
         {icon}
       </div>
     );
+  } else if (type === ButtonType.UNACTIVE) {
+    return (
+      <div onClick={onClick} className={styles.button_unactive}>
+        <p>{value}</p>
+      </div>
+    );
   }
-  // return (
-  //   <div onClick={onClick} className={buttonStyles}>
-  //     <p>{value}</p>
-  //   </div >
-  // );
   return (
-    <div onClick={onClick} className={buttonStyles} style={color && { "border": `4px solid ${color}` }} >
+    <div onClick={onClick} className={buttonStyles} style={color && { "background": `${color}` }} >
       <p>{value}</p>
     </div >
   );

@@ -33,20 +33,15 @@ export const CategoryItemContainer = ({ category, id, index }) => {
 
   // Change active category index and color
   const randomColor = getRandomColor()
-  const changeActiveCategory = (i, color) => {
-    if (!isAactive) {
-      dispatch(updateActiveCategoryAC(i))
-      dispatch(updateActiveCategoryColorAC(color))
-    }
-  }
+  const changeActiveCategory = (i) => dispatch(updateActiveCategoryAC(i))
 
   return (
     <CategoryItem
       isActive={isAactive}
       value={categoryName}
-      color={activeColor}
+      color={randomColor}
       onChange={handleChangeName}
-      onClick={() => changeActiveCategory(index, randomColor)}
+      onClick={() => changeActiveCategory(index)}
       onBlur={changeCategoryName}
       placeholder={CATEGORY_ITEM_PLACEHOLDER}
     />

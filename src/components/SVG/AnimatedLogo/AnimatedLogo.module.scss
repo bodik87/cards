@@ -1,0 +1,46 @@
+@import '../../../assets/style';
+
+.animatedLogo {
+  position: relative;
+
+  &_body {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-orange-1;
+    border-radius: 50%;
+    background: linear-gradient(180deg, $color-orange-2, $color-blue-3);
+    animation-name: anim;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    outline: 4px solid $color-orange-1;
+  }
+
+  &_title {
+    position: absolute;
+    font-weight: 700;
+    font-size: 32px;
+    top: 50%;
+    right: 50%;
+    transform: translateX(85%) translateY(-50%);
+    line-height: 100%;
+    background-color: rgba($color: $color-cyan-1, $alpha: 0.7);
+    padding: 6px 12px;
+    border-radius: 30px;
+    color: $color-black;
+    z-index: 1;
+  }
+}
+
+@keyframes anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
