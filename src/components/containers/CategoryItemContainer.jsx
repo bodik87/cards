@@ -7,9 +7,12 @@ import { CategoryItem } from "../CategoryItem";
 export const CategoryItemContainer = ({ category, index }) => {
 
   const dispatch = useDispatch();
+  const changeActiveCategory = (i) => dispatch(updateActiveCategoryAC(i))
+
   const { activeCategoryIndex } = useSelector(state => state.categoryList);
   const isAactive = index === activeCategoryIndex
-  const changeActiveCategory = (i) => dispatch(updateActiveCategoryAC(i))
+
+
   const randomColor = getRandomColor()
 
   return (

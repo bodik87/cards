@@ -1,30 +1,51 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { VerticalCarousel } from '../VerticalCarousel'
 import { Modal } from "../Modal";
 import { Button } from '../Button'
 import { ADD_CATEGORY, VC_ITEM_HEIGHT, VC_MAX_ITEMS_COUNT } from '../../assets/constants'
 import styles from './Categories.module.scss'
+import { updateActiveCategoryAC, updateCategoriesAC } from '../../store/reducers/actions';
 
 export const Categories = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector(store => store.categoryList);
 
   // Modal
-  const [modalView, setModalView] = useState(false);
-  const toggleModalView = () => setModalView(!modalView)
+  const [modalVisible, setModalVisible] = useState(false);
+  const toggleModalVisible = () => setModalVisible(!modalVisible)
 
-  // Categories
-  const { categories } = useSelector(store => store.categoryList);
+  const clearArray = new Array(6).fill('')
+  const addNewCategory = (title) => {
+    const newCategory = {
+      id: categories.length,
+      name: title.trim(),
+      data: clearArray,
+      translate: clearArray,
+      practice: "",
+    }
+    if (title.trim().length > 0) {
+      const updatedCategoryList = [...categories, newCategory]
+      dispatch(updateCategoriesAC(updatedCategoryList))
+      dispatch(updateActiveCategoryAC(categories.length));
+    }
+  }
 
   return (
     <>
-      <Modal onClick={toggleModalView} isVisible={modalView} />
+      <Modal
+        modalTitle={ADD_CATEGORY}
+        visible={modalVisible}
+        toggleModalVisible={toggleModalVisible}
+        func={addNewCategory}
+      />
       <div className={styles.categories}>
         <VerticalCarousel
           itemsArray={categories}
           itemHeight={VC_ITEM_HEIGHT}
           maxItemsCount={VC_MAX_ITEMS_COUNT}
         />
-        <Button value={ADD_CATEGORY} onClick={toggleModalView} />
+        <Button value={ADD_CATEGORY} onClick={toggleModalVisible} />
       </div>
     </>
   )

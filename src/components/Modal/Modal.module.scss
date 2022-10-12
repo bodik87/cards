@@ -20,15 +20,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: nth($paddings, 5) * 1.5;
-    padding-bottom: nth($paddings, 5);
+    align-items: flex-end;
+    padding: 16px 20px;
+    gap: 24px;
     background: $color-white;
     border-radius: nth($border-radiuses, 2);
 
     @media (max-width: 445px) {
       padding: nth($paddings, 4);
     }
+  }
+
+  &_header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_headerTitle {
+    font-size: nth($font-sizes, 3);
+    font-weight: 700;
   }
 
   &_input {
@@ -47,6 +59,7 @@
     }
 
     &::placeholder {
+      font-size: nth($font-sizes, 2);
       color: $color-blue-2;
     }
 
@@ -56,21 +69,33 @@
     }
   }
 
-  &_btn {
+  &_btnClose,
+  &_btnOk {
     cursor: pointer;
-    width: $modal-btn-size * 2;
-    height: $modal-btn-size;
     border-radius: nth($border-radiuses, 1);
-    background: $color-orange-1;
-    margin-top: nth($margins, 4);
-    margin-left: nth($margins, 2);
+    margin: 0 4px;
     font-size: nth($font-sizes, 1);
     transition: $transition;
     border: $input-border;
     @extend %extend-input;
 
+  }
+
+  &_btnOk {
+    padding: 8px 20px;
+    background: $color-orange-1;
+
     &:hover {
       background: $color-orange-2;
+    }
+  }
+
+  &_btnClose {
+    padding: 8px 16px;
+    background: $color-close-2;
+
+    &:hover {
+      background: $color-close-3;
     }
   }
 }
