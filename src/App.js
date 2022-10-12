@@ -5,6 +5,7 @@ import { Wrapper } from './components/Wrapper';
 import { EmptyCategories } from './components/EmptyCategories';
 import { HomePage } from './pages/HomePage';
 import { PracticePage } from './pages/PracticePage';
+import { TestingPage } from './pages/TestingPage';
 import { updateActiveCategoryAC, updateCategoriesAC } from './store/reducers/actions';
 import { api } from './api';
 import { path } from './path';
@@ -48,6 +49,7 @@ function App() {
           <Routes>
             <Route path={path.home} element={<HomePage />} />
             <Route path={path.practice} element={<PracticePage />} />
+            <Route path={path.testing} element={<TestingPage />} />
             <Route path="*" element={<Notfoundpage />} />
           </Routes> :
           <EmptyCategories />}

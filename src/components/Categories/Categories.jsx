@@ -6,6 +6,8 @@ import { Button, ButtonType } from '../Button'
 import { ADD_CATEGORY, VC_ITEM_HEIGHT, VC_MAX_ITEMS_COUNT } from '../../assets/constants'
 import styles from './Categories.module.scss'
 import { updateActiveCategoryAC, updateCategoriesAC } from '../../store/reducers/actions';
+import { Link } from 'react-router-dom';
+import { path } from '../../path';
 
 export const Categories = () => {
   const dispatch = useDispatch();
@@ -50,6 +52,9 @@ export const Categories = () => {
           type={ButtonType.UNACTIVE}
           onClick={toggleModalVisible}
         />
+
+        <Link to={path.testing}>TESTING</Link>
+
       </div>
     </>
   )
