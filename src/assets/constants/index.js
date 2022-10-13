@@ -29,4 +29,4 @@ export const GREETING_INSTRUCTION = `Create a category with 6 cards,\nadd transl
 // Vertical Carousel (VC)
 export const VC_ITEM_HEIGHT = 60
 export const VC_MAX_ITEMS_COUNT = 5
-export const BURGER_VC_MAX_ITEMS_COUNT = 4
+export const BURGER_VC_MAX_ITEMS_COUNT = 6

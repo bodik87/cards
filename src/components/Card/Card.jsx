@@ -5,8 +5,8 @@ import { ADD_NEW_WORD, ADD_TRANSLATE, EDIT_CARD_VALUES } from '../../assets/cons
 import { updateActiveValueAC } from '../../store/reducers/actions'
 import { MdOutlineFlipCameraAndroid } from 'react-icons/md'
 import { BiEditAlt } from 'react-icons/bi'
-import styles from './Card.module.scss'
 import { ModalDoubleInput } from '../ModalDoubleInput/ModalDoubleInput'
+import styles from './Card.module.scss'
 
 export const Card = ({ words, translates, index }) => {
 
@@ -58,8 +58,8 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_NEW_WORD}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} color={'#738899'} />
-            <BiEditAlt onClick={toggleModalVisible} color={'#738899'} />
+            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} className={styles.btns_front} />
+            <BiEditAlt onClick={toggleModalVisible} className={styles.btns_front} />
           </div>
         </div>
         <div className={backCardStyle}>
@@ -71,8 +71,8 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} color={'#e49a34'} />
-            <BiEditAlt onClick={toggleModalVisible} color={'#e49a34'} />
+            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} className={styles.btns_back} />
+            <BiEditAlt onClick={toggleModalVisible} className={styles.btns_back} />
           </div>
         </div>
 

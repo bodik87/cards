@@ -74,13 +74,13 @@ export const CategoryTitle = () => {
         />
         <BiEditAlt
           size={30}
-          color={'black'}
           onClick={toggleModalVisible}
+          className={styles.btn}
         />
         <MdOutlineDeleteOutline
           size={30}
-          color={'black'}
           onClick={toggleModalDeleteVisible}
+          className={styles.btn}
         />
       </div>
     </>

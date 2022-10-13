@@ -25,6 +25,8 @@
     gap: 24px;
     background: $color-white;
     border-radius: nth($border-radiuses, 2);
+    transition: all $transition * 5;
+    @extend %extend-fadeInAnimation;
 
     @media (max-width: 445px) {
       padding: nth($paddings, 4);

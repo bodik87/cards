@@ -76,3 +76,27 @@
     transform: rotateY(360deg);
   }
 }
+
+.btns {
+
+  &_front {
+    transition: all $transition;
+    color: $color-cyan-2;
+
+    &:hover {
+      color: $color-blue-3;
+      transform: scale(1.1);
+    }
+  }
+
+  &_back {
+    transition: all $transition;
+    color: $color-orange-3;
+
+    &:hover {
+      color: $color-orange-3;
+      transform: scale(1.1);
+    }
+  }
+
+}

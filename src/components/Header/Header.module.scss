@@ -5,8 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: relative;
-  margin-bottom: nth($margins, 2);
+  margin-bottom: nth($margins, 4);
 
   &_categoryTitle {
     display: block;
@@ -28,6 +27,7 @@
 
   @media (max-width: 992px) {
     .header {
+
       &_categoryTitle {
         display: none;
       }
@@ -39,7 +39,6 @@
       }
 
       &_burgerMenu {
-
         &_active {
           display: block;
           background-color: $color-white;
@@ -48,7 +47,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          top: 150px;
+          top: 100px;
           border-radius: nth($border-radiuses, 2);
           border-top-left-radius: 0;
           border-top-right-radius: 0;

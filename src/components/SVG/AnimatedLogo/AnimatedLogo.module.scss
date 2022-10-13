@@ -33,6 +33,13 @@
     color: $color-black;
     z-index: 1;
     user-select: none;
+    transition: all $transition;
+
+    &:hover {
+      transition-duration: 500ms;
+      transform: translateX(87%) translateY(-50%);
+    }
+
   }
 }
 
