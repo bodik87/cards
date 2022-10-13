@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { CategoryItemContainer } from "../../components/containers/CategoryItemContainer";
 import { UpArrow, DownArrow } from "../SVG"
@@ -44,16 +45,15 @@ export const VerticalCarousel = ({
         >
           <div style={{ transform: `translateY(-${startArray}px)` }}>
             <ul>
-              {itemsArray.map((el, i) => {
+              {itemsArray.map(el => {
                 return (
                   <li
-                    key={i + el.id}
+                    key={nanoid()}
                     style={{ height: itemHeight }}
                   >
                     <CategoryItemContainer
                       category={el}
                       id={el.id}
-                      index={i}
                     />
                   </li>
                 );

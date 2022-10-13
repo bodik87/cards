@@ -1,11 +1,10 @@
 import { addActiveIndexToLocalStorage } from "../../utils/addActiveIndexToLocalStorage";
 import { addCategoriesToLocalStorage } from "../../utils/addCategoriesToLocalStorage";
-import { UPDATE_ACTIVE_CATEGORY, UPDATE_ACTIVE_VALUE, UPDATE_CATEGORIES } from "./actions";
+import { DELETE_CATEGORY, UPDATE_ACTIVE_CATEGORY, UPDATE_ACTIVE_VALUE, UPDATE_CATEGORIES } from "./actions";
 
 const defaultState = {
   categories: [],
-  activeCategoryIndex: 0,
-  activeColor: '#5198AE'
+  activeCategoryId: null,
 };
 
 function categoryReducer(state = defaultState, action) {
@@ -20,20 +19,28 @@ function categoryReducer(state = defaultState, action) {
       return stateWithNewCategories
 
     case UPDATE_ACTIVE_CATEGORY:
-      const stateWithNewActiveCategoryIndex = {
+      const stateWithNewactiveCategoryId = {
         ...state,
-        activeCategoryIndex: action.payload.index,
+        activeCategoryId: action.payload.id,
       };
-      addActiveIndexToLocalStorage(stateWithNewActiveCategoryIndex.activeCategoryIndex)
-      return stateWithNewActiveCategoryIndex
+      addActiveIndexToLocalStorage(stateWithNewactiveCategoryId.activeCategoryId)
+      return stateWithNewactiveCategoryId
 
     case UPDATE_ACTIVE_VALUE:
       const stateWithNewValue = {
         ...state,
-        categories: state.categories.map(el => el.id === state.activeCategoryIndex ? action.payload.value : el),
+        categories: state.categories.map(el => el.id === state.activeCategoryId ? action.payload.value : el),
       };
       addCategoriesToLocalStorage(stateWithNewValue.categories)
       return stateWithNewValue
+
+    case DELETE_CATEGORY:
+      const updatedState = {
+        ...state,
+        categories: state.categories.filter(category => category.id !== action.payload.id)
+      };
+      addCategoriesToLocalStorage(updatedState.categories)
+      return updatedState
 
     default:
       return state;

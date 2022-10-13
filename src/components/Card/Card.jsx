@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ADD_NEW_WORD, ADD_TRANSLATE, CLOSE, EDIT_CARD_VALUES, SAVE } from '../../assets/constants'
+import { ADD_NEW_WORD, ADD_TRANSLATE, EDIT_CARD_VALUES } from '../../assets/constants'
 import { updateActiveValueAC } from '../../store/reducers/actions'
 import { MdOutlineFlipCameraAndroid } from 'react-icons/md'
 import { BiEditAlt } from 'react-icons/bi'
@@ -11,7 +11,7 @@ import { ModalDoubleInput } from '../ModalDoubleInput/ModalDoubleInput'
 export const Card = ({ words, translates, index }) => {
 
   // Store
-  const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
+  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
   const dispatch = useDispatch()
 
   // Cart side
@@ -23,7 +23,7 @@ export const Card = ({ words, translates, index }) => {
   const toggleModalVisible = () => setModalVisible(!modalVisible)
 
   const updateCardValues = (text1, text2) => {
-    const filteredCategory = categories.filter(el => el.id === activeCategoryIndex)[0]
+    const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
     const updatedWordsArray = filteredCategory.data.map((el, i) => i === index ? text1 : el)
     const updatedTranslatesArray = filteredCategory.translate.map((el, i) => i === index ? text2 : el)
     const updatedFilteredCategory = {

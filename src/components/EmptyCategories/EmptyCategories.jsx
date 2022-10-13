@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ADD_CATEGORY, GREETING_HELLO, GREETING_INSTRUCTION, GREETING_NAME, GREETING_NAME_DESCR } from '../../assets/constants'
 import { updateActiveCategoryAC, updateCategoriesAC } from '../../store/reducers/actions'
+import { createNewCategory } from '../../utils/createNewCategory'
 import { Button, ButtonType } from '../Button'
 import { Modal } from '../Modal/Modal'
 import { Logo } from '../SVG'
@@ -16,19 +17,12 @@ export const EmptyCategories = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModalVisible = () => setModalVisible(!modalVisible)
 
-  const clearArray = new Array(6).fill('')
   const addNewCategory = (title) => {
-    const newCategory = {
-      id: categories.length,
-      name: title.trim(),
-      data: clearArray,
-      translate: clearArray,
-      practice: "",
-    }
+    const newCategory = createNewCategory(title)
     if (title.trim().length > 0) {
       const updatedCategoryList = [...categories, newCategory]
       dispatch(updateCategoriesAC(updatedCategoryList))
-      dispatch(updateActiveCategoryAC(categories.length));
+      dispatch(updateActiveCategoryAC(newCategory.id));
     }
   }
 

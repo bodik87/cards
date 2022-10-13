@@ -13,46 +13,36 @@ import { Notfoundpage } from './pages/Notfoundpage';
 
 function App() {
   const dispatch = useDispatch();
+  const { categories, activeCategoryId } = useSelector(store => store.categoryList);
 
   useEffect(() => {
     const localCategoryList = JSON.parse(localStorage.getItem("localCategoryList"));
-    const localActiveIndex = JSON.parse(localStorage.getItem("localActiveIndex"));
+    const localActiveId = JSON.parse(localStorage.getItem("localActiveId"));
     const data = api.getCategories();
     const actualCategoryList = localCategoryList || data;
-    const actualActiveIndex = localActiveIndex || 0;
+    const actualActiveId = localActiveId || data[0].id;
     if (Array.isArray(actualCategoryList) && actualCategoryList.length > 0) {
       dispatch(updateCategoriesAC(actualCategoryList));
-      dispatch(updateActiveCategoryAC(actualActiveIndex));
+      dispatch(updateActiveCategoryAC(actualActiveId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [activeCategoryId]);
 
-  // useEffect(() => {
-  //   const data = api.getCards()
-  //   console.log(data);
-  //   const localActiveIndex = JSON.parse(localStorage.getItem("localActiveIndex"));
-  //   const actualActiveIndex = localActiveIndex || 0;
-  //   if (Array.isArray(data) && data.length > 0) {
-  //     dispatch(updateCategoriesAC(data));
-  //     dispatch(updateActiveCategoryAC(actualActiveIndex));
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
 
-  const { categories } = useSelector(store => store.categoryList);
-  const emptyCategories = categories.length > 0
+  const emptyCategories = categories.length === 0 && activeCategoryId === null
 
   return (
     <BrowserRouter>
       <Wrapper>
         {emptyCategories ?
+          <EmptyCategories /> :
           <Routes>
             <Route path={path.home} element={<HomePage />} />
             <Route path={path.practice} element={<PracticePage />} />
             <Route path={path.testing} element={<TestingPage />} />
             <Route path="*" element={<Notfoundpage />} />
-          </Routes> :
-          <EmptyCategories />}
+          </Routes>
+        }
       </Wrapper>
     </BrowserRouter>
   );

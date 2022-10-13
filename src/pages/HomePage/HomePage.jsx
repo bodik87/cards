@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Content } from '../../components/Content'
 import { Card } from '../../components/Card'
 import { useSelector } from 'react-redux'
@@ -9,21 +9,9 @@ import styles from './HomePage.module.scss'
 import { CategoryTitle } from '../../components/CategoryTitle/CategoryTitle'
 
 export const HomePage = () => {
-  // Store
-  const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
 
-  const [words, setWords] = useState([])
-  const [translates, setTranslates] = useState([])
-
-  // Words array
-  useEffect(() => {
-    setWords(categories[activeCategoryIndex]?.data)
-  }, [categories, activeCategoryIndex])
-
-  // Translates array
-  useEffect(() => {
-    setTranslates(categories[activeCategoryIndex]?.translate)
-  }, [categories, activeCategoryIndex])
+  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
+  const activeCategory = categories.filter(category => category.id === activeCategoryId)[0]
 
   return (
     <div className={styles.homepage}>
@@ -35,10 +23,10 @@ export const HomePage = () => {
             <CategoryTitle />
           </div>
           <div className={styles.homepage_cards}>
-            {words.map((el, i) => <Card
+            {activeCategory.wordsData.map((el, i) => <Card
               key={nanoid()}
-              words={words}
-              translates={translates}
+              words={activeCategory.wordsData}
+              translates={activeCategory.translatesData}
               index={i}
             />)}
           </div>

@@ -10,19 +10,19 @@ import { Categories } from '../../components/Categories';
 import { CategoryTitle } from '../../components/CategoryTitle';
 
 export const PracticePage = () => {
-  const { categories, activeCategoryIndex } = useSelector(state => state.categoryList);
+  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
   const dispatch = useDispatch()
 
   const [words, setWords] = useState([])
   const [practice, setPractice] = useState('')
 
   useEffect(() => {
-    setWords(categories[activeCategoryIndex]?.data)
-  }, [categories, activeCategoryIndex])
+    setWords(categories[activeCategoryId]?.data)
+  }, [categories, activeCategoryId])
 
   useEffect(() => {
-    setPractice(categories[activeCategoryIndex]?.practice)
-  }, [categories, activeCategoryIndex])
+    setPractice(categories[activeCategoryId]?.practice)
+  }, [categories, activeCategoryId])
 
   const handleChangePracticeText = (e) => {
     setPractice(e.target.value)
@@ -30,14 +30,14 @@ export const PracticePage = () => {
 
   // Почему это мутация??? categories.filter - это ж уже новы массив!
   // const updateSelectedCategoryPractice = () => {
-  //   const filteredCategory = categories.filter(el => el.id === activeCategoryIndex)[0]
+  //   const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
   //   filteredCategory.practice = practice
   //   dispatch(updateActivePracticeAC(filteredCategory))
   // }
 
 
   const updateSelectedCategoryPractice = (e) => {
-    const filteredCategory = categories.filter(el => el.id === activeCategoryIndex)[0]
+    const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
     const updatedFilteredCategory = {
       ...filteredCategory,
       practice: e.target.value
