@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from '../../assets/constants'
 import styles from './ModalDoubleInput.module.scss'
@@ -12,10 +12,12 @@ export const ModalDoubleInput = ({
   payload2 = ''
 }) => {
 
+  const inputRef = useRef();
   const [inputText1, setInputText1] = useState('')
   const [inputText2, setInputText2] = useState('')
 
   useEffect(() => {
+    inputRef.current.focus()
     setInputText1(payload1)
     setInputText2(payload2)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,6 +48,7 @@ export const ModalDoubleInput = ({
         </div>
 
         <input
+          ref={inputRef}
           className={styles.modal_input}
           value={inputText1}
           onChange={(e) => setInputText1(e.target.value)}

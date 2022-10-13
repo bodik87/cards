@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from '../../assets/constants'
 import styles from './Modal.module.scss'
@@ -18,9 +18,11 @@ export const Modal = ({
   payload = ''
 }) => {
 
+  const inputRef = useRef();
   const [inputText, setInputText] = useState('')
 
   useEffect(() => {
+    inputRef.current.focus()
     setInputText(payload)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
@@ -44,6 +46,7 @@ export const Modal = ({
 
   const modalStyles = !visible ? styles.modal : styles.modal_isVisible;
 
+
   return (
     <div className={modalStyles} onClick={closeModal}>
       <div className={styles.modal_content} onClick={avoidEmptyClick}>
@@ -54,6 +57,7 @@ export const Modal = ({
         </div>
 
         <input
+          ref={inputRef}
           className={styles.modal_input}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}

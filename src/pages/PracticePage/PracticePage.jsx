@@ -8,42 +8,35 @@ import styles from './PracticePage.module.scss'
 import { Header } from '../../components/Header';
 import { Categories } from '../../components/Categories';
 import { CategoryTitle } from '../../components/CategoryTitle';
+import { useDebounce } from '../../hooks/useDebounce'
 
 export const PracticePage = () => {
-  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
-  const dispatch = useDispatch()
 
-  const [words, setWords] = useState([])
+  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
+  const activeCategory = categories.filter(category => category.id === activeCategoryId)[0]
+
+  const dispatch = useDispatch()
   const [practice, setPractice] = useState('')
 
   useEffect(() => {
-    setWords(categories[activeCategoryId]?.data)
+    setPractice(activeCategory.practice)
   }, [categories, activeCategoryId])
 
-  useEffect(() => {
-    setPractice(categories[activeCategoryId]?.practice)
-  }, [categories, activeCategoryId])
+  const updateSelectedCategoryPractice = (e) => {
+    const updatedCategory = {
+      ...activeCategory,
+      practice: e.target.value
+    }
+    dispatch(updateActiveValueAC(updatedCategory))
+  }
+
+  const debouncedInput = useDebounce(updateSelectedCategoryPractice, 500)
 
   const handleChangePracticeText = (e) => {
     setPractice(e.target.value)
+    debouncedInput(e)
   }
 
-  // Почему это мутация??? categories.filter - это ж уже новы массив!
-  // const updateSelectedCategoryPractice = () => {
-  //   const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
-  //   filteredCategory.practice = practice
-  //   dispatch(updateActivePracticeAC(filteredCategory))
-  // }
-
-
-  const updateSelectedCategoryPractice = (e) => {
-    const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
-    const updatedFilteredCategory = {
-      ...filteredCategory,
-      practice: e.target.value
-    }
-    dispatch(updateActiveValueAC(updatedFilteredCategory))
-  }
 
   return (
     <div className={styles.practice}>
@@ -55,7 +48,7 @@ export const PracticePage = () => {
             <CategoryTitle />
           </div>
           <div className={styles.practice_miniCards}>
-            {words.map(el => <input
+            {activeCategory.wordsData.map(el => <input
               key={nanoid()} defaultValue={el}
               disabled="disabled"
               className={styles.practice_miniCard}
@@ -66,7 +59,6 @@ export const PracticePage = () => {
             onChange={handleChangePracticeText}
             className={styles.textArea}
             placeholder={PRACTICE_TEXTAREA_PLACEHOLDER}
-            onBlur={updateSelectedCategoryPractice}
           />
         </Content>
       </div>

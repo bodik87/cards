@@ -8,6 +8,7 @@ import { Modal } from "../Modal";
 import { ModalDelete } from "../ModalDelete";
 import styles from './CategoryTitle.module.scss'
 import { getRandomColor } from "../../utils/getRandomColor";
+import { createNewCategory } from "../../utils/createNewCategory";
 
 export const CategoryTitle = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,28 @@ export const CategoryTitle = () => {
     dispatch(updateActiveValueAC(updatedFilteredCategory))
   }
 
+  // const addNewCategory = (title) => {
+  //   const newCategory = createNewCategory(title)
+  //   if (title.trim().length > 0) {
+  //     const updatedCategoryList = [...categories, newCategory]
+  //     dispatch(updateCategoriesAC(updatedCategoryList))
+  //     dispatch(updateActiveCategoryAC(newCategory.id));
+  //   }
+  // }
+
   const deleteCategory = () => {
     const selectedCategory = { ...activeCategory }
     const { id } = selectedCategory
-    dispatch(deleteCategoryAC(id))
-    // dispatch(updateActiveCategoryAC(categories.id))
+    if (categories[0].id !== id) {
+      dispatch(deleteCategoryAC(id))
+      dispatch(updateActiveCategoryAC(categories[0].id))
+    } else if (categories.length > 1) {
+      dispatch(deleteCategoryAC(id))
+      dispatch(updateActiveCategoryAC(categories[1].id))
+    } else {
+      dispatch(updateCategoriesAC([]))
+      dispatch(updateActiveCategoryAC(null))
+    }
   }
 
   const randomColor = getRandomColor()

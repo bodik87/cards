@@ -20,13 +20,13 @@ function App() {
     const localActiveId = JSON.parse(localStorage.getItem("localActiveId"));
     const data = api.getCategories();
     const actualCategoryList = localCategoryList || data;
-    const actualActiveId = localActiveId || data[0].id;
+    const actualActiveId = localActiveId || data[0]?.id;
     if (Array.isArray(actualCategoryList) && actualCategoryList.length > 0) {
       dispatch(updateCategoriesAC(actualCategoryList));
       dispatch(updateActiveCategoryAC(actualActiveId));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCategoryId]);
+  }, []);
 
 
   const emptyCategories = categories.length === 0 && activeCategoryId === null
