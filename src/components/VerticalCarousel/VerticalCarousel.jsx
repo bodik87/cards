@@ -35,13 +35,13 @@ export const VerticalCarousel = ({
   return (
     <>
       <div className={styles.verticalCarouselContainer}>
-        <UpArrow
+        {/* <UpArrow
           color={inactiveUpArrow ? "transparent" : "#95AABB"}
           style={inactiveUpArrow ? "upArrow_inactive" : "upArrow"}
           onClick={translateUP}
-        />
-        <div
-          style={{ height: carouselContainerVisibleHeight, overflow: "hidden" }}
+        /> */}
+        <div className={styles.overflow}
+          style={{ height: carouselContainerVisibleHeight }}
         >
           <div style={{ transform: `translateY(-${startArray}px)` }}>
             <ul>
@@ -61,11 +61,11 @@ export const VerticalCarousel = ({
             </ul>
           </div>
         </div>
-        <DownArrow
+        {/* <DownArrow
           color={inactiveDownArrow ? "transparent" : "#95AABB"}
           style={inactiveDownArrow ? "downArrow_inactive" : "downArrow"}
           onClick={translateDown}
-        />
+        /> */}
       </div>
     </>
   );
