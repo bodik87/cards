@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { BiEditAlt } from 'react-icons/bi'
-import { MdOutlineDeleteOutline } from 'react-icons/md'
-import { DELETE_CATEGORY, RENAME_CATEGORY } from "../../assets/constants";
 import { deleteCategoryAC, updateActiveCategoryAC, updateActiveValueAC, updateCategoriesAC } from "../../store/reducers/actions";
+import { MdOutlineDeleteOutline } from 'react-icons/md'
 import { Modal } from "../Modal";
 import { ModalDelete } from "../ModalDelete";
-import styles from './CategoryTitle.module.scss'
+import { DELETE_CATEGORY, RENAME_CATEGORY } from "../../assets/constants";
 import { getRandomColor } from "../../utils/getRandomColor";
-import { createNewCategory } from "../../utils/createNewCategory";
+import styles from './CategoryTitle.module.scss'
 
 export const CategoryTitle = () => {
   const dispatch = useDispatch();
@@ -16,12 +15,6 @@ export const CategoryTitle = () => {
   const { categories, activeCategoryId } = useSelector(state => state.categoryList);
 
   const activeCategory = categories.filter(category => category.id === activeCategoryId)[0]
-
-  // const [title, setTitle] = useState(activeCategory.name)
-
-  // useEffect(() => {
-  //   setTitle(activeCategory.name)
-  // }, [activeCategoryId])
 
   // Modal
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,17 +30,8 @@ export const CategoryTitle = () => {
       ...filteredCategory,
       name: text,
     }
-    dispatch(updateActiveValueAC(updatedFilteredCategory))
+    if (activeCategory.name !== text) dispatch(updateActiveValueAC(updatedFilteredCategory))
   }
-
-  // const addNewCategory = (title) => {
-  //   const newCategory = createNewCategory(title)
-  //   if (title.trim().length > 0) {
-  //     const updatedCategoryList = [...categories, newCategory]
-  //     dispatch(updateCategoriesAC(updatedCategoryList))
-  //     dispatch(updateActiveCategoryAC(newCategory.id));
-  //   }
-  // }
 
   const deleteCategory = () => {
     const selectedCategory = { ...activeCategory }

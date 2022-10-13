@@ -11,8 +11,9 @@ import { ModalDoubleInput } from '../ModalDoubleInput/ModalDoubleInput'
 export const Card = ({ words, translates, index }) => {
 
   // Store
-  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
   const dispatch = useDispatch()
+  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
+  const activeCategory = categories.filter(category => category.id === activeCategoryId)[0]
 
   // Cart side
   const [frontCardSide, setFrontCardSide] = useState(true)
@@ -23,13 +24,12 @@ export const Card = ({ words, translates, index }) => {
   const toggleModalVisible = () => setModalVisible(!modalVisible)
 
   const updateCardValues = (text1, text2) => {
-    const filteredCategory = categories.filter(el => el.id === activeCategoryId)[0]
-    const updatedWordsArray = filteredCategory.data.map((el, i) => i === index ? text1 : el)
-    const updatedTranslatesArray = filteredCategory.translate.map((el, i) => i === index ? text2 : el)
+    const updatedWordsArray = words.map((el, i) => i === index ? text1 : el)
+    const updatedTranslatesArray = translates.map((el, i) => i === index ? text2 : el)
     const updatedFilteredCategory = {
-      ...filteredCategory,
-      data: updatedWordsArray,
-      translate: updatedTranslatesArray
+      ...activeCategory,
+      wordsData: updatedWordsArray,
+      translatesData: updatedTranslatesArray
     }
     dispatch(updateActiveValueAC(updatedFilteredCategory))
   }
