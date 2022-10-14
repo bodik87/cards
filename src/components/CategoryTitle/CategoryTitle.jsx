@@ -5,12 +5,19 @@ import { deleteCategoryAC, updateActiveCategoryAC, updateActiveValueAC, updateCa
 import { MdOutlineDeleteOutline } from 'react-icons/md'
 import { Modal } from "../Modal";
 import { ModalDelete } from "../ModalDelete";
-import { DELETE_CATEGORY, RENAME_CATEGORY } from "../../assets/constants";
+import { DELETE_CATEGORY, PRACTICE, RENAME_CATEGORY } from "../../assets/constants";
 import { getRandomColor } from "../../utils/getRandomColor";
 import styles from './CategoryTitle.module.scss'
+import { Link, useLocation } from "react-router-dom";
+import { path } from "../../path";
+import { Button, ButtonType } from "../Button";
 
 export const CategoryTitle = () => {
   const dispatch = useDispatch();
+
+  // Location
+  const location = useLocation()
+  const showPracticeButton = location.pathname !== '/practice'
 
   const { categories, activeCategoryId } = useSelector(state => state.categoryList);
 
@@ -73,15 +80,16 @@ export const CategoryTitle = () => {
           style={{ 'color': randomColor && randomColor }}
         />
         <BiEditAlt
-          size={30}
+          size={28}
           onClick={toggleModalVisible}
           className={styles.btn}
         />
         <MdOutlineDeleteOutline
-          size={30}
+          size={28}
           onClick={toggleModalDeleteVisible}
           className={styles.btn}
         />
+        <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.ORANGE} />}</Link>
       </div>
     </>
   )

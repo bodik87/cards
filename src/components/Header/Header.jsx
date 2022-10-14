@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { VC_ITEM_HEIGHT, BURGER_VC_MAX_ITEMS_COUNT, ADD_CATEGORY, PRACTICE } from '../../assets/constants'
 import { path } from '../../path'
 import { Burger } from '../Burger'
-import { Button, ButtonType } from '../Button'
+import { Button } from '../Button'
 import { Modal } from '../Modal'
 import { CategoryTitle } from '../CategoryTitle'
 import { AnimatedLogo } from '../SVG/AnimatedLogo/AnimatedLogo'
@@ -16,10 +16,6 @@ import styles from './Header.module.scss'
 export const Header = () => {
   // Store
   const { categories } = useSelector(state => state.categoryList);
-
-  // Location
-  const location = useLocation()
-  const showPracticeButton = location.pathname !== '/practice'
 
   const [burgerMenu, setBurgerMenu] = useState(false)
   const toggleBurgerMenu = () => setBurgerMenu(!burgerMenu)
@@ -39,7 +35,6 @@ export const Header = () => {
           <div className={styles.header_categoryTitle}>
             <CategoryTitle />
           </div>
-          <Link to={path.practice}>{showPracticeButton && <Button value={PRACTICE} type={ButtonType.ORANGE} />}</Link>
           <Burger onClick={toggleBurgerMenu} />
         </div>
         <div className={burgerMenuStyles}>

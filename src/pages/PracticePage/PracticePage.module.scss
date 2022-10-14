@@ -46,7 +46,7 @@
     padding: nth($paddings, 3) 0;
     font-weight: nth($font-weights, 2);
     font-size: nth($font-sizes, 2);
-    border: $input-border;
+    border: 2px solid $color-blue-2;
     @extend %extend-input;
 
     &::placeholder {

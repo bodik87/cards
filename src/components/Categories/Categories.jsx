@@ -43,7 +43,7 @@ export const Categories = () => {
         />
         <Button
           value={ADD_CATEGORY}
-          type={ButtonType.UNACTIVE}
+          type={ButtonType.ORANGE}
           onClick={toggleModalVisible}
         />
 

@@ -3,7 +3,6 @@
 .categories {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-right: nth($margins, 4);
   gap: nth($gaps, 1);
 

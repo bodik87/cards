@@ -1,6 +1,7 @@
 @import '../../assets/style';
 
 .categoryTitle {
+  width: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -9,9 +10,10 @@
   user-select: none;
 
   &_input {
+    width: 350px;
     text-align: right;
     font-weight: nth($font-weights, 2);
-    font-size: nth($font-sizes, 5);
+    font-size: nth($font-sizes, 5) * 1.5;
     background: none;
     border: none;
     color: $color-black;

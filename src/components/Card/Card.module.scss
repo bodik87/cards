@@ -52,6 +52,7 @@
 
 .card {
   background: $color-blue-1;
+  border: 2px solid $color-blue-2;
 
   &_active {
     @extend .card;

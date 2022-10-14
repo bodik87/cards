@@ -42,12 +42,12 @@
         &_active {
           display: block;
           background-color: $color-white;
-          height: 100vh;
+          // height: 100vh;
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
-          top: 100px;
+          top: 150px;
           border-radius: nth($border-radiuses, 2);
           border-top-left-radius: 0;
           border-top-right-radius: 0;
