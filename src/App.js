@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route path={path.home} element={<HomePage />} />
             <Route path={path.practice} element={<PracticePage />} />
-            <Route path={path.testing} element={<TestingPage />} />
+            {/* <Route path={path.testing} element={<TestingPage />} /> */}
             <Route path="*" element={<Notfoundpage />} />
           </Routes>
         }

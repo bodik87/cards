@@ -47,7 +47,7 @@ export const Categories = () => {
           onClick={toggleModalVisible}
         />
 
-        <Link to={path.testing}>TESTING</Link>
+        {/* <Link to={path.testing}>TESTING</Link> */}
 
       </div>
     </>

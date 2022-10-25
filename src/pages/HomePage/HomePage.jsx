@@ -23,7 +23,7 @@ export const HomePage = () => {
             <CategoryTitle />
           </div>
           <div className={styles.homepage_cards}>
-            {activeCategory.wordsData.map((el, i) => <Card
+            {activeCategory && activeCategory.wordsData.map((el, i) => <Card
               key={nanoid()}
               words={activeCategory.wordsData}
               translates={activeCategory.translatesData}
