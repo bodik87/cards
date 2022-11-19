@@ -1,58 +1,16 @@
 export const CATEGORIES = [
   {
-    id: 777,
+    id: 0,
     name: "Body",
     wordsData: ["bag", "head", "shoulder", "arm", "hand", "elbow"],
-    translatesData: ["Текст1", "", "", "", "", ""],
-    practice: "First sentenсe with head",
+    translatesData: ["Translate 1", "Translate 2", "", "", "", ""],
+    practice: "Text for practice",
   },
   {
     id: 1,
     name: "Colors",
     wordsData: ["aquamarine", "beige", "snowy", "white", "turquoise", "pale"],
-    translatesData: ["Текс 2", "", "", "", "", ""],
-    practice: "Second sentenсe with head",
-  },
-  {
-    id: 2,
-    name: "City",
-    wordsData: ["town", "city", "building", "skyscraper", "palace", "bank"],
-    translatesData: ["", "", "", "", "", ""],
+    translatesData: ["Translate 1", "Translate 2", "", "", "", ""],
     practice: "",
-  },
-  {
-    id: 3,
-    name: "Food",
-    wordsData: ["salate", "ham", "sausage", "meat", "egg", "pizza"],
-    translatesData: ["", "", "", "", "", ""],
-    practice: "",
-  },
-  {
-    id: 4,
-    name: "Animals",
-    wordsData: ["bear", "fox", "rabbit", "wolf", "pig", "deer"],
-    translatesData: ["", "", "", "", "", ""],
-    practice: "",
-  },
-  {
-    id: 5,
-    name: "Clothes",
-    wordsData: ["blouse", "skirt", "dress", "shirt", "trousers", "socks"],
-    translatesData: ["", "", "", "", "", ""],
-    practice: "",
-  },
-  {
-    id: 6,
-    name: "Kitchen",
-    wordsData: ["cabinet", "microwave", "canister", "stove", "burner", "oven"],
-    translatesData: ["", "", "", "", "", ""],
-    practice: "",
-  },
-  {
-    id: 7,
-    name: "Time",
-    wordsData: ["past", "future", "present", "age", "millenium", "century"],
-    translatesData: ["", "", "", "", "", ""],
-    practice: "",
-  },
+  }
 ];
