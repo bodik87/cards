@@ -11,9 +11,7 @@
   background: $color-mainDark;
   box-shadow: 5px 2px 7px 1px rgba(0, 0, 0, 0.3);
 
-  @media (max-width: 1024px) {
-    margin: 0;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+  @media (max-width: 767px) {
+    display: none;
   }
 }

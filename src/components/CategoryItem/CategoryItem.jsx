@@ -1,13 +1,13 @@
 import React from "react";
-import { Button } from "../Button";
+import { CategoryButton } from "../CategoryButton";
 
-export const CategoryItem = ({ isActive, value, onClick, color }) => {
+export const CategoryItem = ({ isActive, value, onClick }) => {
   return (
     <>
       {isActive ? (
-        <Button isActive={isActive} onClick={onClick} value={value} />
+        <CategoryButton isActive={isActive} onClick={onClick} value={value} />
       ) : (
-        <Button onClick={onClick} value={value} />
+        <CategoryButton onClick={onClick} value={value} />
       )}
     </>
   );

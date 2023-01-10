@@ -1,19 +1,8 @@
 import styles from "./Button.module.scss";
 
-export const Button = ({
-  isActive,
-  onClick,
-  value,
-  color = "rgba($color: #fff, $alpha: 0.3)",
-}) => {
-  const buttonStyles = !isActive ? styles.button : styles.button_active;
-
+export const Button = ({ onClick, value }) => {
   return (
-    <div
-      className={styles.button}
-      style={{ background: color }}
-      onClick={onClick}
-    >
+    <div className={styles.button} onClick={onClick}>
       {value}
     </div>
   );

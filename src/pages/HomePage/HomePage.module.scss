@@ -2,13 +2,17 @@
 
 .homepage {
   &_cards {
-    width: $cards-grid-width;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: nth($gaps, 3) / 2;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
 
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
+    @media (max-width: 991px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
   }
 }

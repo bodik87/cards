@@ -11,8 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   background: linear-gradient(180deg, #285cf3, #7e26ed);
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  padding: 24px 12px;
 }
 
 a {
@@ -22,4 +22,12 @@ a {
 ul,
 ol {
   list-style: none;
+}
+
+@media (max-width: 767px) {
+  body {
+    min-height: 100vh;
+    padding: 0;
+    background: linear-gradient(180deg, #163592, #7e26ed);
+  }
 }

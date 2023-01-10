@@ -1,4 +1,4 @@
-@import '../../assets/style';
+@import "../../assets/style";
 
 .modal {
   display: none;
@@ -23,8 +23,8 @@
     align-items: center;
     padding: 16px 20px;
     gap: 24px;
-    background: $color-white;
-    border-radius: nth($border-radiuses, 2);
+    background-color: rgba($color-white, 0.98);
+    border-radius: 12px;
     @extend %extend-fadeInAnimation;
 
     @media (max-width: 445px) {
@@ -55,13 +55,12 @@
   &_btnClose,
   &_btnOk {
     cursor: pointer;
-    border-radius: nth($border-radiuses, 1);
+    border-radius: 8px;
     margin: 0 4px;
     font-size: nth($font-sizes, 2);
     transition: $transition;
     border: $input-border;
     @extend %extend-input;
-
   }
 
   &_btnOk {

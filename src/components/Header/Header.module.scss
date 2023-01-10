@@ -3,16 +3,8 @@
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
-  margin-bottom: nth($margins, 4);
-
-  @media (max-width: 744px) {
-    margin-top: 4px;
-    padding-right: 60px;
-  }
-
-  @media (max-width: 445px) {
-    margin-bottom: nth($margins, 4);
-  }
+  gap: 24px;
+  padding: 24px 4px;
 }

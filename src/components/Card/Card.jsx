@@ -1,41 +1,52 @@
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { ADD_NEW_WORD, ADD_TRANSLATE, EDIT_CARD_VALUES } from '../../assets/constants'
-import { updateActiveValueAC } from '../../store/reducers/actions'
-import { MdOutlineFlipCameraAndroid } from 'react-icons/md'
-import { BiEditAlt } from 'react-icons/bi'
-import { ModalDoubleInput } from '../ModalDoubleInput/ModalDoubleInput'
-import styles from './Card.module.scss'
+import React from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  ADD_NEW_WORD,
+  ADD_TRANSLATE,
+  EDIT_CARD_VALUES,
+} from "../../assets/constants";
+import { updateActiveValueAC } from "../../store/reducers/actions";
+import { MdOutlineFlipCameraAndroid } from "react-icons/md";
+import { BiEditAlt } from "react-icons/bi";
+import { ModalDoubleInput } from "../ModalDoubleInput/ModalDoubleInput";
+import styles from "./Card.module.scss";
 
 export const Card = ({ words, translates, index }) => {
-
   // Store
-  const dispatch = useDispatch()
-  const { categories, activeCategoryId } = useSelector(state => state.categoryList);
-  const activeCategory = categories.filter(category => category.id === activeCategoryId)[0]
+  const dispatch = useDispatch();
+  const { categories, activeCategoryId } = useSelector(
+    (state) => state.categoryList
+  );
+  const activeCategory = categories.filter(
+    (category) => category.id === activeCategoryId
+  )[0];
 
   // Cart side
-  const [frontCardSide, setFrontCardSide] = useState(true)
-  const toggleCardSide = () => setFrontCardSide(!frontCardSide)
+  const [frontCardSide, setFrontCardSide] = useState(true);
+  const toggleCardSide = () => setFrontCardSide(!frontCardSide);
 
   // Modal
   const [modalVisible, setModalVisible] = useState(false);
-  const toggleModalVisible = () => setModalVisible(!modalVisible)
+  const toggleModalVisible = () => setModalVisible(!modalVisible);
 
   const updateCardValues = (text1, text2) => {
-    const updatedWordsArray = words.map((el, i) => i === index ? text1 : el)
-    const updatedTranslatesArray = translates.map((el, i) => i === index ? text2 : el)
+    const updatedWordsArray = words.map((el, i) => (i === index ? text1 : el));
+    const updatedTranslatesArray = translates.map((el, i) =>
+      i === index ? text2 : el
+    );
     const updatedFilteredCategory = {
       ...activeCategory,
       wordsData: updatedWordsArray,
-      translatesData: updatedTranslatesArray
-    }
-    dispatch(updateActiveValueAC(updatedFilteredCategory))
-  }
+      translatesData: updatedTranslatesArray,
+    };
+    dispatch(updateActiveValueAC(updatedFilteredCategory));
+  };
 
   const frontCardStyle = frontCardSide ? styles.card : styles.card_active;
-  const backCardStyle = frontCardSide ? styles.cardTranslate : styles.cardTranslate_active;
+  const backCardStyle = frontCardSide
+    ? styles.cardTranslate
+    : styles.cardTranslate_active;
 
   return (
     <>
@@ -58,8 +69,16 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_NEW_WORD}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} className={styles.btns_front} />
-            <BiEditAlt onClick={toggleModalVisible} className={styles.btns_front} />
+            <MdOutlineFlipCameraAndroid
+              size={20}
+              onClick={toggleCardSide}
+              className={styles.btns_front}
+            />
+            <BiEditAlt
+              size={20}
+              onClick={toggleModalVisible}
+              className={styles.btns_front}
+            />
           </div>
         </div>
         <div className={backCardStyle}>
@@ -71,12 +90,19 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid onClick={toggleCardSide} className={styles.btns_back} />
-            <BiEditAlt onClick={toggleModalVisible} className={styles.btns_back} />
+            <MdOutlineFlipCameraAndroid
+              size={20}
+              onClick={toggleCardSide}
+              className={styles.btns_back}
+            />
+            <BiEditAlt
+              size={20}
+              onClick={toggleModalVisible}
+              className={styles.btns_back}
+            />
           </div>
         </div>
-
       </div>
     </>
-  )
-}
+  );
+};

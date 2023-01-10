@@ -28,12 +28,9 @@
     }
   }
 
-  @media (max-width: 744px) {
+  @media (max-width: 767px) {
     cursor: pointer;
     display: block;
-    position: fixed;
-    top: 18px;
-    right: 24px;
     width: 30px;
     height: 30px;
     display: flex;

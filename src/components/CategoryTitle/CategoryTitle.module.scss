@@ -10,7 +10,7 @@
   user-select: none;
 
   &_input {
-    width: 200px;
+    width: 300px;
     text-align: right;
     font-weight: nth($font-weights, 2);
     font-size: nth($font-sizes, 5) * 1.2;
@@ -20,21 +20,18 @@
     margin-right: 12px;
     @extend %extend-text-ellipsis;
     @extend %extend-input;
-    @media (max-width: 744px) {
-      width: 160px;
-      font-size: 30px;
-    }
-    @media (max-width: 650px) {
+
+    @media (max-width: 767px) {
       display: none;
     }
   }
 }
 
 .btn {
-  color: $color-cyan-1;
+  color: rgba($color-cyan-1, $alpha: 0.5);
   transition: all $transition;
 
   &:hover {
-    color: $color-close-2;
+    color: rgba($color-orange-1, $alpha: 0.8);
   }
 }

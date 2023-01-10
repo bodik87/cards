@@ -1,44 +1,55 @@
 @import "../../assets/style";
 
 .cardWrapper {
-  height: $card-wrapper-height;
+  // min-width: 250px;
+  width: 100%;
+  max-width: 250px;
+  height: 80px;
   perspective: $card-wrapper-perspective;
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 }
 
 .card,
 .cardTranslate {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   position: absolute;
   inset: 0px 0px 0px 0px;
-  padding: 8px;
-  border-radius: nth($border-radiuses, 2);
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: $shadow;
+  font-weight: 600;
   backface-visibility: hidden;
   transition: $card-transition;
-  font-size: nth($font-sizes, 4);
+  font-size: nth($font-sizes, 3);
   border: $input-border;
-  font-weight: nth($font-weights, 2);
 
   &_wordValue,
   &_translateValue {
     flex-grow: 1;
     background: none;
     border: none;
-    font-size: nth($font-sizes, 4);
-    color: $color-black;
+    font-size: nth($font-sizes, 3);
+    color: $color-cyan-1;
     @extend %extend-text-ellipsis;
     @extend %extend-input;
 
+    @media (max-width: 767px) {
+      font-size: nth($font-sizes, 2);
+    }
+
     &::placeholder {
-      font-size: nth($font-sizes, 3);
+      font-size: nth($font-sizes, 2);
       color: $color-blue-2;
     }
   }
 
   &_translateValue {
     &::placeholder {
-      font-size: nth($font-sizes, 3);
-      color: $color-orange-3;
+      font-size: nth($font-sizes, 2);
+      color: rgba($color-orange-3, $alpha: 0.4);
     }
   }
 
@@ -51,8 +62,7 @@
 }
 
 .card {
-  background: $color-blue-1;
-  border: 2px solid $color-blue-2;
+  background-color: rgba($color: #fff, $alpha: 0.2);
 
   &_active {
     @extend .card;
@@ -61,7 +71,7 @@
 }
 
 .cardTranslate {
-  background: $color-orange-1;
+  background: rgba($color-orange-1, $alpha: 0.8);
   transform: rotateY(180deg);
 
   &:focus {
@@ -81,20 +91,20 @@
 .btns {
   &_front {
     transition: all $transition;
-    color: $color-cyan-2;
+    color: rgba($color-cyan-1, $alpha: 0.5);
 
     &:hover {
-      color: $color-blue-3;
+      color: rgba($color-cyan-1, $alpha: 0.8);
       transform: scale(1.1);
     }
   }
 
   &_back {
     transition: all $transition;
-    color: $color-orange-3;
+    color: rgba($color-orange-3, $alpha: 0.4);
 
     &:hover {
-      color: $color-orange-3;
+      color: rgba($color-orange-3, $alpha: 0.4);
       transform: scale(1.1);
     }
   }
