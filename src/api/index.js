@@ -10,13 +10,10 @@ export const api = {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error(error)
-    } finally {
-      console.log('Загрузка закончена в async/await')
+      console.error(error);
     }
-
   },
   getCategories: () => {
     return CATEGORIES;
-  }
+  },
 };

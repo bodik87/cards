@@ -1,0 +1,19 @@
+.logo {
+  width: fit-content;
+  padding: 0 8px;
+  border-radius: 8px;
+  background-color: rgba($color: #fff, $alpha: 0.8);
+  font-size: 36px;
+  color: #2944c2;
+  font-weight: 900;
+  background: -webkit-linear-gradient(#285cf3, #7e26ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: 744px) {
+    font-size: 30px;
+  }
+  @media (max-width: 445px) {
+    font-size: 24px;
+  }
+}

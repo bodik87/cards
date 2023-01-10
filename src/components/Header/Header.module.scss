@@ -1,4 +1,4 @@
-@import '../../assets/style';
+@import "../../assets/style";
 
 .header {
   width: 100%;
@@ -7,54 +7,9 @@
   align-items: center;
   margin-bottom: nth($margins, 4);
 
-  &_categoryTitle {
-    display: block;
-  }
-
-  &_burgerMenu {
-    display: none;
-  }
-
-  &_rowBtns {
-    display: flex;
-    align-items: center;
-    gap: nth($gaps, 2);
-
-    @media (max-width: 445px) {
-      gap: nth($gaps, 1);
-    }
-  }
-
-  @media (max-width: 992px) {
-    .header {
-
-      &_categoryTitle {
-        display: none;
-      }
-
-      &_btns {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      &_burgerMenu {
-        &_active {
-          display: block;
-          background-color: $color-white;
-          // height: 100vh;
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          top: 100px;
-          border-radius: nth($border-radiuses, 2);
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          z-index: 1;
-        }
-      }
-    }
+  @media (max-width: 744px) {
+    margin-top: 4px;
+    padding-right: 60px;
   }
 
   @media (max-width: 445px) {

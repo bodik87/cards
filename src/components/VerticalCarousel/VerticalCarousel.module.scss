@@ -1,4 +1,4 @@
-@import '../../assets/style';
+@import "../../assets/style";
 
 .verticalCarouselContainer {
   display: flex;
@@ -9,7 +9,6 @@
 .overflow {
   width: 165px;
   border-radius: 15px;
-  overflow: scroll;
 
   &::-webkit-scrollbar {
     width: 4px;

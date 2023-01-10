@@ -1,28 +1,14 @@
 import React from "react";
-import { Button, ButtonType } from "../Button";
+import { Button } from "../Button";
 
-export const CategoryItem = ({
-  isActive,
-  value,
-  onClick,
-  color,
-}) => {
-
+export const CategoryItem = ({ isActive, value, onClick, color }) => {
   return (
     <>
-      {isActive ?
-        <Button
-          isActive={isActive}
-          onClick={onClick}
-          value={value}
-          color={color}
-        />
-        :
-        <Button
-          type={ButtonType.UNACTIVE}
-          onClick={onClick}
-          value={value}
-        />}
+      {isActive ? (
+        <Button isActive={isActive} onClick={onClick} value={value} />
+      ) : (
+        <Button onClick={onClick} value={value} />
+      )}
     </>
   );
 };

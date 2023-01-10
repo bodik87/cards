@@ -1,4 +1,4 @@
-@import '../../assets/style';
+@import "../../assets/style";
 
 .cardWrapper {
   height: $card-wrapper-height;
@@ -79,7 +79,6 @@
 }
 
 .btns {
-
   &_front {
     transition: all $transition;
     color: $color-cyan-2;
@@ -99,5 +98,4 @@
       transform: scale(1.1);
     }
   }
-
 }

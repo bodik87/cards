@@ -1,55 +1,15 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { VC_ITEM_HEIGHT, BURGER_VC_MAX_ITEMS_COUNT, ADD_CATEGORY, PRACTICE } from '../../assets/constants'
-import { path } from '../../path'
-import { Burger } from '../Burger'
-import { Button } from '../Button'
-import { Modal } from '../Modal'
-import { CategoryTitle } from '../CategoryTitle'
-import { AnimatedLogo } from '../SVG/AnimatedLogo/AnimatedLogo'
-import { VerticalCarousel } from '../VerticalCarousel'
+import { BurgerMenu } from "../BurgerMenu";
+import { CategoryTitle } from "../CategoryTitle";
+import { Logo } from "../Logo/Logo";
 
-import styles from './Header.module.scss'
-
+import styles from "./Header.module.scss";
 
 export const Header = () => {
-  // Store
-  const { categories } = useSelector(state => state.categoryList);
-
-  const [burgerMenu, setBurgerMenu] = useState(false)
-  const toggleBurgerMenu = () => setBurgerMenu(!burgerMenu)
-  const burgerMenuStyles = burgerMenu ? styles.header_burgerMenu_active : styles.header_burgerMenu;
-
-  // Modal
-  const [modalView, setModalView] = useState(false);
-  const toggleModalView = () => setModalView(!modalView)
-
   return (
-    <>
-      <Modal onClick={toggleModalView} isVisible={modalView} />
-      <div className={styles.header}>
-        <Link to={path.home}><AnimatedLogo /></Link>
-
-        <div className={styles.header_rowBtns}>
-          <div className={styles.header_categoryTitle}>
-            <CategoryTitle />
-          </div>
-          <Burger onClick={toggleBurgerMenu} />
-        </div>
-        <div className={burgerMenuStyles}>
-          <VerticalCarousel
-            itemsArray={categories}
-            itemHeight={VC_ITEM_HEIGHT}
-            maxItemsCount={BURGER_VC_MAX_ITEMS_COUNT}
-          />
-          <div className={styles.header_btns}>
-            <Button
-              value={ADD_CATEGORY}
-              onClick={toggleModalView} />
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
+    <header className={styles.header}>
+      {/* <Logo /> */}
+      <CategoryTitle />
+      <BurgerMenu />
+    </header>
+  );
+};

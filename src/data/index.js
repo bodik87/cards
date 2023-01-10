@@ -10,7 +10,7 @@ export const CATEGORIES = [
     id: 1,
     name: "Colors",
     wordsData: ["aquamarine", "beige", "snowy", "white", "turquoise", "pale"],
-    translatesData: ["Translate 1", "Translate 2", "", "", "", ""],
+    translatesData: ["", "", "", "", "", ""],
     practice: "",
-  }
+  },
 ];
