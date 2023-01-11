@@ -36,19 +36,15 @@
     @extend %extend-text-ellipsis;
     @extend %extend-input;
 
-    @media (max-width: 767px) {
-      font-size: nth($font-sizes, 2);
-    }
-
     &::placeholder {
-      font-size: nth($font-sizes, 2);
+      font-size: nth($font-sizes, 3);
       color: $color-blue-2;
     }
   }
 
   &_translateValue {
     &::placeholder {
-      font-size: nth($font-sizes, 2);
+      font-size: nth($font-sizes, 3);
       color: rgba($color-orange-3, $alpha: 0.4);
     }
   }
