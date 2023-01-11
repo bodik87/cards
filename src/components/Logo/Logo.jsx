@@ -1,3 +1,4 @@
+import React from "react";
 import { LOGO_TITLE } from "../../assets/constants";
 import styles from "./Logo.module.scss";
 

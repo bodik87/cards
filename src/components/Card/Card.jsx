@@ -7,11 +7,9 @@ import {
   EDIT_CARD_VALUES,
 } from "../../assets/constants";
 import { updateActiveValueAC } from "../../store/reducers/actions";
-import { MdOutlineFlipCameraAndroid } from "react-icons/md";
-import { BiEditAlt } from "react-icons/bi";
-
-import styles from "./Card.module.scss";
+import { EditIcon } from "../Icons/EditIcon";
 import { ModalDoubleInput } from "../Modals/ModalDoubleInput/ModalDoubleInput";
+import styles from "./Card.module.scss";
 
 export const Card = ({ words, translates, index }) => {
   // Store
@@ -50,7 +48,7 @@ export const Card = ({ words, translates, index }) => {
     : styles.cardTranslate_active;
 
   return (
-    <>
+    <React.Fragment>
       <ModalDoubleInput
         modalTitle={EDIT_CARD_VALUES}
         visible={modalVisible}
@@ -70,15 +68,12 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_NEW_WORD}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid
-              size={20}
-              onClick={toggleCardSide}
-              className={styles.btns_front}
-            />
-            <BiEditAlt
-              size={20}
+            <EditIcon width={20} height={20} onClick={toggleCardSide} />
+            <EditIcon
+              width={20}
+              height={20}
               onClick={toggleModalVisible}
-              className={styles.btns_front}
+              className={styles.btns_back}
             />
           </div>
         </div>
@@ -91,19 +86,21 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>
-            <MdOutlineFlipCameraAndroid
-              size={20}
+            <EditIcon
+              width={20}
+              height={20}
               onClick={toggleCardSide}
               className={styles.btns_back}
             />
-            <BiEditAlt
-              size={20}
+            <EditIcon
+              width={20}
+              height={20}
               onClick={toggleModalVisible}
               className={styles.btns_back}
             />
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

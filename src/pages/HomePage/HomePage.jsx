@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { Card } from "../../components/Card";

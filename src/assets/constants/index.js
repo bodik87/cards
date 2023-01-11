@@ -25,8 +25,10 @@ export const CATEGORY_ITEM_PLACEHOLDER = "Add a category name";
 //EMPTY Categories
 export const GREETING_HELLO = "Hello!";
 export const GREETING_NAME = "This is Cards!";
-export const GREETING_NAME_DESCR = `It\'s app for memorizing words`;
-export const GREETING_INSTRUCTION = `Create a category with 6 cards,\nadd translations and practice \nby writing a small text`;
+export const GREETING_NAME_DESCR = `It'ss app for memorizing words`;
+export const GREETING_INSTRUCTION = `Create a category with 6 cards, 
+add translations and practice 
+by writing a small text`;
 
 // Vertical Carousel (VC)
 export const VC_ITEM_HEIGHT = 60;

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../Modals/Modal";
 import { ModalDelete } from "../../Modals/ModalDelete";
-import { Button } from "../Button";
-import { BurgerIcon } from "../../Icons/BurgerIcon";
 import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
@@ -78,7 +76,7 @@ export const ControlButtons = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <ModalDelete
         modalTitle={DELETE_CATEGORY}
         visible={deleteModal}
@@ -110,6 +108,6 @@ export const ControlButtons = () => {
           <AddIcon width={25} height={25} />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };

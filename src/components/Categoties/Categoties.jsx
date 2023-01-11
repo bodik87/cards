@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { CategoryItemContainer } from "../containers/CategoryItemContainer";
 import styles from "./Categories.module.scss";

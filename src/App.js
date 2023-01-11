@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -25,7 +26,7 @@ function App() {
     const localActiveId = JSON.parse(localStorage.getItem("localActiveId"));
     const data = api.getCategories();
     const actualCategoryList = localCategoryList || data;
-    const actualActiveId = localActiveId || data[0]?.id;
+    const actualActiveId = localActiveId || data[0].id;
     if (Array.isArray(actualCategoryList) && actualCategoryList.length > 0) {
       dispatch(updateCategoriesAC(actualCategoryList));
       dispatch(updateActiveCategoryAC(actualActiveId));

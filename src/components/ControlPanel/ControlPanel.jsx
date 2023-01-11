@@ -1,3 +1,4 @@
+import React from "react";
 import { Logo } from "../Logo/Logo";
 import { Categories } from "../Categoties/Categoties";
 import styles from "./ControlPanel.module.scss";
@@ -15,7 +16,7 @@ export const ControlPanel = () => {
   const [visible, setVisible] = useState(false);
   const handleClick = () => setVisible(!visible);
   return (
-    <>
+    <React.Fragment>
       <div className={styles.panel}>
         <div>
           <Logo />
@@ -49,6 +50,6 @@ export const ControlPanel = () => {
       >
         <Button value={showPracticeButton ? PRACTICE : "Home"} />
       </Link>
-    </>
+    </React.Fragment>
   );
 };
