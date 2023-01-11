@@ -43,6 +43,7 @@
   background: rgba($color-cyan-1, $alpha: 0.8);
   border-radius: 8px;
   transition: $transition * 5;
+  line-height: 1.4;
 
   &::-webkit-scrollbar {
     width: 4px;
@@ -60,7 +61,7 @@
   }
 
   &::placeholder {
-    color: $color-blue-2;
+    color: $color-mainDark;
   }
 
   &:focus {
