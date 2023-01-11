@@ -12,8 +12,8 @@ import {
   updateCategoriesAC,
 } from "../../store/reducers/actions";
 import { createNewCategory } from "../../utils/createNewCategory";
-import { Button, ButtonType } from "../Button";
-import { Modal } from "../Modal/Modal";
+import { Button } from "../ControlPanel/Button";
+import { Modal } from "../Modals/Modal/Modal";
 import styles from "./EmptyCategories.module.scss";
 
 export const EmptyCategories = () => {

@@ -14,16 +14,18 @@
     width: 100%;
   }
   @media (max-width: 767px) {
-    background-color: transparent;
+    padding-top: 75px;
+    flex-direction: column;
+    background: linear-gradient(180deg, #2447c3, transparent);
     box-shadow: none;
   }
   &_wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 12px 12px 12px;
+    padding: 12px;
     @media (max-width: 640px) {
-      padding: 0 8px 8px 8px;
+      padding: 12px 8px;
     }
     // margin-top: auto;
   }

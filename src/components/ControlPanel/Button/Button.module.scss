@@ -1,0 +1,63 @@
+@import "../../../assets/style";
+
+.button {
+  min-width: 48px;
+  text-align: center;
+  padding: 16px 12px;
+  border-radius: 8px;
+  background-color: rgba($color: #fff, $alpha: 0.2);
+  box-shadow: $shadow;
+  color: $color-cyan-1;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s all;
+  user-select: none;
+  &:hover {
+    color: white;
+    background: rgba($color: #fff, $alpha: 0.4);
+  }
+  &:active {
+    background: rgba($color: #fff, $alpha: 0.2);
+    transform: scale(0.95);
+  }
+  &_active {
+    text-align: center;
+    padding: 16px 12px;
+    border-radius: 8px;
+    background-color: #1678f3;
+    box-shadow: $shadow;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s all;
+    user-select: none;
+    &:hover {
+      color: $color-cyan-1;
+      background-color: #6221bf;
+    }
+    &:active {
+      background-color: #4b1992;
+      transform: scale(0.95);
+    }
+  }
+  &_small {
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: rgba($color: #fff, $alpha: 0.2);
+    box-shadow: $shadow;
+    color: $color-mainDark;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s all;
+    user-select: none;
+    &:hover {
+      color: $color-mainDark;
+      background: rgba($color: #fff, $alpha: 0.4);
+    }
+    &:active {
+      background: rgba($color: #fff, $alpha: 0.2);
+      transform: scale(0.95);
+    }
+  }
+}

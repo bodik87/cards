@@ -1,13 +1,13 @@
 import React from "react";
-import { CategoryButton } from "../CategoryButton";
+import { Button } from "../ControlPanel/Button";
 
 export const CategoryItem = ({ isActive, value, onClick }) => {
   return (
     <>
       {isActive ? (
-        <CategoryButton isActive={isActive} onClick={onClick} value={value} />
+        <Button isActive={isActive} onClick={onClick} value={value} />
       ) : (
-        <CategoryButton onClick={onClick} value={value} />
+        <Button onClick={onClick} value={value} />
       )}
     </>
   );

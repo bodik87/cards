@@ -9,8 +9,9 @@ import {
 import { updateActiveValueAC } from "../../store/reducers/actions";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
-import { ModalDoubleInput } from "../ModalDoubleInput/ModalDoubleInput";
+
 import styles from "./Card.module.scss";
+import { ModalDoubleInput } from "../Modals/ModalDoubleInput/ModalDoubleInput";
 
 export const Card = ({ words, translates, index }) => {
   // Store

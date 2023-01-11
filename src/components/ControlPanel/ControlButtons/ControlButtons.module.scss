@@ -1,0 +1,11 @@
+@import "../../../assets/style/";
+
+.buttonsRow {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  @media (max-width: 767px) {
+    margin-top: 0;
+  }
+}

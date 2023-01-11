@@ -37,7 +37,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Wrapper> */}
       {emptyCategories ? (
         <EmptyCategories />
       ) : (
@@ -47,7 +46,6 @@ function App() {
           <Route path="*" element={<Notfoundpage />} />
         </Routes>
       )}
-      {/* </Wrapper> */}
     </BrowserRouter>
   );
 }

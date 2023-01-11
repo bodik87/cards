@@ -1,15 +1,11 @@
-import { Categories } from "../Categories";
-import { Header } from "../Header";
+import { ControlPanel } from "../ControlPanel";
 import styles from "./PageContainer.module.scss";
 
 export const PageContainer = ({ children }) => {
   return (
     <div className={styles.pageContainer}>
-      <Categories />
-      <div className={styles.pageContainer_wrapper}>
-        <Header />
-        {children}
-      </div>
+      <ControlPanel />
+      <div className={styles.pageContainer_wrapper}>{children}</div>
     </div>
   );
 };
