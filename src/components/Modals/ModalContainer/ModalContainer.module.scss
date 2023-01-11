@@ -41,6 +41,7 @@
     font-size: nth($font-sizes, 3);
     color: $color-cyan-1;
     font-weight: 800;
+    margin-right: 16px;
   }
 
   &_input {
@@ -80,7 +81,7 @@
   }
 
   &_btnOk {
-    padding: 8px 20px;
+    padding: 8px 16px;
     background: $color-orange-1;
 
     &:hover {

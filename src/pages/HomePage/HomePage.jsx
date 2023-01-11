@@ -36,6 +36,9 @@ export const HomePage = () => {
 
   return (
     <PageContainer>
+      <div className={styles.homepage_label}>
+        Слова категорії - {activeCategory.name}
+      </div>
       <div className={styles.homepage_cards}>
         {activeCategory &&
           activeCategory.wordsData.map((el, i) => (
@@ -47,6 +50,7 @@ export const HomePage = () => {
             />
           ))}
       </div>
+      <div className={styles.homepage_label}>Практика</div>
       <textarea
         value={practice}
         onChange={handleChangePracticeText}

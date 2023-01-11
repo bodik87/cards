@@ -23,7 +23,7 @@ export const Card = ({ words, translates, index }) => {
 
   // Cart side
   const [frontCardSide, setFrontCardSide] = useState(true);
-  const toggleCardSide = () => words[index] && setFrontCardSide(!frontCardSide);
+  const toggleCardSide = () => setFrontCardSide(!frontCardSide);
 
   // Modal
   const [modalVisible, setModalVisible] = useState(false);
@@ -68,7 +68,9 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_NEW_WORD}
           />
           <div className={styles.card_btnsWrapper}>
-            <div className={styles.btns_top} onClick={toggleCardSide} />
+            {words[index] && (
+              <div className={styles.btns_top} onClick={toggleCardSide} />
+            )}
 
             <div onClick={toggleModalVisible}>
               <EditIcon width={18} height={18} />
@@ -84,7 +86,9 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>
-            <div className={styles.btns_top} onClick={toggleCardSide} />
+            {words[index] && (
+              <div className={styles.btns_top} onClick={toggleCardSide} />
+            )}
             <div onClick={toggleModalVisible}>
               <EditIcon width={18} height={18} />
             </div>

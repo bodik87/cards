@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from "../../../assets/constants";
+import {
+  ADD,
+  CLOSE,
+  MODAL_INPUT_PLACEHOLDER,
+  MODAL_INPUT_PLACEHOLDER_TRNSLT,
+} from "../../../assets/constants";
 import { ModalContainer } from "../ModalContainer/ModalContainer";
 import styles from "./ModalDoubleInput.module.scss";
 
@@ -53,7 +58,7 @@ export const ModalDoubleInput = ({
         className={styles.input}
         value={inputText2}
         onChange={(e) => setInputText2(e.target.value)}
-        placeholder={MODAL_INPUT_PLACEHOLDER}
+        placeholder={MODAL_INPUT_PLACEHOLDER_TRNSLT}
       />
     </ModalContainer>
   );

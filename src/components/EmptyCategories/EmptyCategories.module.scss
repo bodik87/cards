@@ -1,4 +1,4 @@
-@import '../../assets/style';
+@import "../../assets/style";
 
 .emptyCategories {
   display: flex;
@@ -6,10 +6,12 @@
   align-items: center;
   gap: nth($gaps, 2);
   padding: nth($paddings, 5) 0;
+  color: $color-cyan-1;
 
   &_instruction {
     font-size: nth($font-sizes, 2);
     text-align: center;
     white-space: pre-line;
+    line-height: 1.6;
   }
 }
