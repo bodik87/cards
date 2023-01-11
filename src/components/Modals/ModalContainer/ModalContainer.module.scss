@@ -4,9 +4,7 @@
   display: none;
 
   &_isVisible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 140px 12px 12px 12px;
     position: fixed;
     inset: 0;
     background: rgba($color-black, 0.5);
