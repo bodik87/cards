@@ -68,13 +68,13 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_NEW_WORD}
           />
           <div className={styles.card_btnsWrapper}>
-            <EditIcon width={20} height={20} onClick={toggleCardSide} />
-            <EditIcon
-              width={20}
-              height={20}
-              onClick={toggleModalVisible}
-              className={styles.btns_back}
-            />
+            <div onClick={toggleCardSide}>
+              <EditIcon width={20} height={20} className={styles.btns_back} />
+            </div>
+
+            <div onClick={toggleModalVisible}>
+              <EditIcon width={20} height={20} className={styles.btns_back} />
+            </div>
           </div>
         </div>
         <div className={backCardStyle}>
@@ -86,18 +86,12 @@ export const Card = ({ words, translates, index }) => {
             placeholder={ADD_TRANSLATE}
           />
           <div className={styles.card_btnsWrapper}>
-            <EditIcon
-              width={20}
-              height={20}
-              onClick={toggleCardSide}
-              className={styles.btns_back}
-            />
-            <EditIcon
-              width={20}
-              height={20}
-              onClick={toggleModalVisible}
-              className={styles.btns_back}
-            />
+            <div onClick={toggleCardSide}>
+              <EditIcon width={20} height={20} className={styles.btns_back} />
+            </div>
+            <div onClick={toggleModalVisible}>
+              <EditIcon width={20} height={20} className={styles.btns_back} />
+            </div>
           </div>
         </div>
       </div>

@@ -5,13 +5,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { EmptyCategories } from "./components/EmptyCategories";
 import { HomePage } from "./pages/HomePage";
 import { PracticePage } from "./pages/PracticePage";
+import { Notfoundpage } from "./pages/Notfoundpage";
 import {
   updateActiveCategoryAC,
   updateCategoriesAC,
 } from "./store/reducers/actions";
 import { api } from "./api";
 import { path } from "./path";
-import { Notfoundpage } from "./pages/Notfoundpage";
 
 function App() {
   const dispatch = useDispatch();
