@@ -9,4 +9,8 @@
     margin-top: 0;
     margin-right: 26px;
   }
+  @media (max-width: 480px) {
+    margin-right: 8px;
+    gap: 18px;
+  }
 }
