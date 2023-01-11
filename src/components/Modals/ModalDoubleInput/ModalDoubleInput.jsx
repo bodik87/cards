@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { ADD, CLOSE, MODAL_INPUT_PLACEHOLDER } from "../../../assets/constants";
+import { ModalContainer } from "../ModalContainer/ModalContainer";
 import styles from "./ModalDoubleInput.module.scss";
 
 export const ModalDoubleInput = ({
@@ -12,14 +13,11 @@ export const ModalDoubleInput = ({
   payload2 = "",
 }) => {
   const inputRef = useRef();
-  const [inputText1, setInputText1] = useState("");
-  const [inputText2, setInputText2] = useState("");
+  const [inputText1, setInputText1] = useState(payload1);
+  const [inputText2, setInputText2] = useState(payload2);
 
   useEffect(() => {
     inputRef.current.focus();
-    setInputText1(payload1);
-    setInputText2(payload2);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
   const mainFunction = (text1, text2) => {
@@ -33,42 +31,28 @@ export const ModalDoubleInput = ({
     setInputText2("");
   };
 
-  const avoidEmptyClick = (e) => e.stopPropagation();
-
-  const modalStyles = !visible ? styles.modal : styles.modal_isVisible;
-
   return (
-    <div className={modalStyles} onClick={closeModal}>
-      <div className={styles.modal_content} onClick={avoidEmptyClick}>
-        <div className={styles.modal_header}>
-          <label className={styles.modal_headerTitle}>{modalTitle}</label>
-          <button className={styles.modal_btnClose} onClick={closeModal}>
-            {CLOSE}
-          </button>
-        </div>
-
-        <input
-          ref={inputRef}
-          className={styles.modal_input}
-          value={inputText1}
-          onChange={(e) => setInputText1(e.target.value)}
-          placeholder={MODAL_INPUT_PLACEHOLDER}
-        />
-
-        <input
-          className={styles.modal_input}
-          value={inputText2}
-          onChange={(e) => setInputText2(e.target.value)}
-          placeholder={MODAL_INPUT_PLACEHOLDER}
-        />
-
-        <button
-          onClick={() => mainFunction(inputText1, inputText2)}
-          className={styles.modal_btnOk}
-        >
-          {ADD}
-        </button>
-      </div>
-    </div>
+    <ModalContainer
+      visible={visible}
+      modalTitle={modalTitle}
+      enableButton={ADD}
+      disableButton={CLOSE}
+      onDisableClick={closeModal}
+      onEnableClick={() => mainFunction(inputText1, inputText2)}
+    >
+      <input
+        ref={inputRef}
+        className={styles.input}
+        value={inputText1}
+        onChange={(e) => setInputText1(e.target.value)}
+        placeholder={MODAL_INPUT_PLACEHOLDER}
+      />
+      <input
+        className={styles.input}
+        value={inputText2}
+        onChange={(e) => setInputText2(e.target.value)}
+        placeholder={MODAL_INPUT_PLACEHOLDER}
+      />
+    </ModalContainer>
   );
 };

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../Modals/Modal";
 import { ModalDelete } from "../../Modals/ModalDelete";
 import { Button } from "../Button";
+import { BurgerIcon } from "../../Icons/BurgerIcon";
 import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
@@ -17,39 +18,28 @@ import {
 
 import { createNewCategory } from "../../../utils/createNewCategory";
 import styles from "./ControlButtons.module.scss";
+import { EditIcon } from "../../Icons/EditIcon";
+import { DeleteIcon } from "../../Icons/DeleteIcon";
+import { AddIcon } from "../../Icons/AddIcon";
 
 export const ControlButtons = () => {
   const dispatch = useDispatch();
-  // const { categories } = useSelector((store) => store.categoryList);
-
   const { categories, activeCategoryId } = useSelector(
     (state) => state.categoryList
   );
-
   const activeCategory = categories.filter(
     (category) => category.id === activeCategoryId
   )[0];
 
-  // Modal
-  // const [modalVisible, setModalVisible] = useState(false);
-  // const toggleModalVisible = () => setModalVisible(!modalVisible);
+  // Modals for cedit ategory
+  const [deleteModal, setDeleteModal] = useState(false);
+  const toggleDeleteModal = () => setDeleteModal(!deleteModal);
 
-  // Modal delete
-  const [modalDeleteVisible, setModaDeletelVisible] = useState(false);
-  const toggleModalDeleteVisible = () =>
-    setModaDeletelVisible(!modalDeleteVisible);
+  const [editModal, setEditModal] = useState(false);
+  const toggleEditModal = () => setEditModal(!editModal);
 
-  const renameCategory = (text) => {
-    const filteredCategory = categories.filter(
-      (el) => el.id === activeCategoryId
-    )[0];
-    const updatedFilteredCategory = {
-      ...filteredCategory,
-      name: text,
-    };
-    if (activeCategory.name !== text)
-      dispatch(updateActiveValueAC(updatedFilteredCategory));
-  };
+  const [addModal, setAddModal] = useState(false);
+  const toggleAddModal = () => setAddModal(!addModal);
 
   const deleteCategory = () => {
     const selectedCategory = { ...activeCategory };
@@ -66,8 +56,17 @@ export const ControlButtons = () => {
     }
   };
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const toggleModalVisible = () => setModalVisible(!modalVisible);
+  const renameCategory = (text) => {
+    const filteredCategory = categories.filter(
+      (el) => el.id === activeCategoryId
+    )[0];
+    const updatedFilteredCategory = {
+      ...filteredCategory,
+      name: text,
+    };
+    if (activeCategory.name !== text)
+      dispatch(updateActiveValueAC(updatedFilteredCategory));
+  };
 
   const addNewCategory = (title) => {
     const newCategory = createNewCategory(title);
@@ -80,33 +79,36 @@ export const ControlButtons = () => {
 
   return (
     <>
-      <Modal
-        modalTitle={ADD_CATEGORY}
-        visible={modalVisible}
-        toggleModalVisible={toggleModalVisible}
-        func={addNewCategory}
+      <ModalDelete
+        modalTitle={DELETE_CATEGORY}
+        visible={deleteModal}
+        toggleModalVisible={toggleDeleteModal}
+        func={deleteCategory}
       />
       <Modal
         modalTitle={RENAME_CATEGORY}
-        visible={modalVisible}
-        toggleModalVisible={toggleModalVisible}
+        visible={editModal}
+        toggleModalVisible={toggleEditModal}
         func={renameCategory}
         payload={activeCategory.name}
       />
-      <ModalDelete
-        modalTitle={DELETE_CATEGORY}
-        visible={modalDeleteVisible}
-        toggleModalVisible={toggleModalDeleteVisible}
-        func={deleteCategory}
+      <Modal
+        modalTitle={ADD_CATEGORY}
+        visible={addModal}
+        toggleModalVisible={toggleAddModal}
+        func={addNewCategory}
       />
+
       <div className={styles.buttonsRow}>
-        <Button type="small" onClick={toggleModalDeleteVisible} value={"-"} />
-        <Button type="small" onClick={toggleModalVisible} value={"*"} />
-        <Button
-          type="small"
-          onClick={toggleModalVisible}
-          value={ADD_CATEGORY}
-        />
+        <div onClick={toggleDeleteModal}>
+          <DeleteIcon width={25} height={25} />
+        </div>
+        <div onClick={toggleEditModal}>
+          <EditIcon width={25} height={25} />
+        </div>
+        <div onClick={toggleAddModal}>
+          <AddIcon width={25} height={25} />
+        </div>
       </div>
     </>
   );

@@ -4,8 +4,9 @@
   margin-top: 18px;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 26px;
   @media (max-width: 767px) {
     margin-top: 0;
+    margin-right: 26px;
   }
 }

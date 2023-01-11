@@ -1,5 +1,5 @@
 export const LOGO_TITLE = "CARDS";
-export const ADD_CATEGORY = "+";
+export const ADD_CATEGORY = "Add category";
 export const RENAME_CATEGORY = "Rename category";
 export const DELETE_CATEGORY = "Delete category";
 export const DELETE_CATEGORY_CONFIRMATION =
