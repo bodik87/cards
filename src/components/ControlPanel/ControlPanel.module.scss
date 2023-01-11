@@ -69,7 +69,8 @@
     flex-direction: column;
     align-items: center;
     padding-top: 100px;
-    background-color: $color-mainDark;
+    backdrop-filter: blur(12px);
+    background-color: rgba(black, $alpha: 0.8);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     z-index: 5;
