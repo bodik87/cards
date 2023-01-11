@@ -89,23 +89,14 @@
 }
 
 .btns {
-  &_front {
+  &_top {
+    width: 18px;
+    height: 12px;
+    border-radius: 6px;
     transition: all $transition;
-    color: rgba($color-cyan-1, $alpha: 0.5);
-
+    background-color: rgba($color: #fff, $alpha: 0.3);
     &:hover {
-      color: rgba($color-cyan-1, $alpha: 0.8);
-      transform: scale(1.1);
-    }
-  }
-
-  &_back {
-    transition: all $transition;
-    color: rgba($color-orange-3, $alpha: 0.4);
-
-    &:hover {
-      color: rgba($color-orange-3, $alpha: 0.4);
-      transform: scale(1.1);
+      background-color: rgba($color: #fff, $alpha: 0.2);
     }
   }
 }

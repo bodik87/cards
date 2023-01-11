@@ -18,6 +18,8 @@ export const ModalDoubleInput = ({
 
   useEffect(() => {
     inputRef.current.focus();
+    setInputText1(payload1);
+    setInputText2(payload2);
   }, [visible]);
 
   const mainFunction = (text1, text2) => {

@@ -5,7 +5,6 @@ import { Card } from "../../components/Card";
 import { PageContainer } from "../../components/PageContainer/PageContainer";
 import styles from "./HomePage.module.scss";
 import { updateActiveValueAC } from "../../store/reducers/actions";
-import { useDebounce } from "../../hooks/useDebounce";
 import { PRACTICE_TEXTAREA_PLACEHOLDER } from "../../assets/constants";
 
 export const HomePage = () => {
@@ -30,11 +29,9 @@ export const HomePage = () => {
     dispatch(updateActiveValueAC(updatedCategory));
   };
 
-  const debouncedInput = useDebounce(updateSelectedCategoryPractice, 500);
-
   const handleChangePracticeText = (e) => {
     setPractice(e.target.value);
-    debouncedInput(e);
+    updateSelectedCategoryPractice(e);
   };
 
   return (

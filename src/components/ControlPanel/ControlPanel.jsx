@@ -22,7 +22,7 @@ export const ControlPanel = () => {
         <div className={styles.panel_right}>
           <ControlButtons />
           <div className={styles.burger}>
-            <div onClick={handleClick}>
+            <div onClick={handleClick} className={styles.burger_icon}>
               <BurgerIcon width={25} height={25} />
             </div>
 
