@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { EmptyCategories } from "./components/EmptyCategories";
 import { HomePage } from "./pages/HomePage";
-import { PracticePage } from "./pages/PracticePage";
 import { Notfoundpage } from "./pages/Notfoundpage";
 import {
   updateActiveCategoryAC,
@@ -43,7 +42,6 @@ function App() {
       ) : (
         <Routes>
           <Route path={path.home} element={<HomePage />} />
-          <Route path={path.practice} element={<PracticePage />} />
           <Route path="*" element={<Notfoundpage />} />
         </Routes>
       )}
