@@ -6,4 +6,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
+  @media (max-width: 365px) {
+    font-size: 36px;
+  }
 }

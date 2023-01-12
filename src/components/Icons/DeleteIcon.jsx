@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Icons.module.scss";
 
 export const DeleteIcon = ({ width, height }) => (
   <svg
@@ -6,7 +7,8 @@ export const DeleteIcon = ({ width, height }) => (
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
-    stroke="white"
+    className={styles.icon}
+    stroke="#E3E7F7"
     width={width}
     height={height}
   >

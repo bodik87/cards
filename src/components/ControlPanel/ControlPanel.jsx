@@ -1,10 +1,11 @@
 import React from "react";
 import { Logo } from "../Logo/Logo";
 import { Categories } from "../Categoties/Categoties";
-import styles from "./ControlPanel.module.scss";
 import { ControlButtons } from "./ControlButtons/ControlButtons";
 import { useState } from "react";
 import { BurgerIcon } from "../Icons/BurgerIcon";
+import { CloseIcon } from "../Icons/CloseIcon";
+import styles from "./ControlPanel.module.scss";
 
 export const ControlPanel = () => {
   const [visible, setVisible] = useState(false);
@@ -23,7 +24,11 @@ export const ControlPanel = () => {
           <ControlButtons />
           <div className={styles.burger}>
             <div onClick={handleClick} className={styles.burger_icon}>
-              <BurgerIcon width={25} height={25} />
+              {!visible ? (
+                <BurgerIcon width={25} height={25} />
+              ) : (
+                <CloseIcon width={25} height={25} />
+              )}
             </div>
 
             <div

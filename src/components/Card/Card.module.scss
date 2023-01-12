@@ -1,20 +1,19 @@
 @import "../../assets/style";
 
 .cardWrapper {
-  // min-width: 250px;
   width: 100%;
   max-width: 250px;
-  height: 80px;
+  height: 90px;
   perspective: $card-wrapper-perspective;
   @media (max-width: 767px) {
     max-width: 100%;
+    height: 150px;
   }
 }
 
 .card,
 .cardTranslate {
   display: flex;
-  // justify-content: space-between;
   position: absolute;
   inset: 0px 0px 0px 0px;
   padding: 4px;
@@ -24,41 +23,56 @@
   backface-visibility: hidden;
   transition: $card-transition;
   font-size: nth($font-sizes, 3);
-  border: $input-border;
+  border: 1px solid rgba($color: #fff, $alpha: 0.1);
 
   &_wordValue,
   &_translateValue {
     flex-grow: 1;
     background: none;
     border: none;
-    font-size: nth($font-sizes, 3);
+    font-size: nth($font-sizes, 2);
     color: $color-cyan-1;
     @extend %extend-text-ellipsis;
     @extend %extend-input;
 
     &::placeholder {
-      font-size: nth($font-sizes, 3);
+      font-size: nth($font-sizes, 2);
       color: $color-blue-1;
+      @media (max-width: 480px) {
+        font-size: nth($font-sizes, 3);
+      }
+    }
+
+    @media (max-width: 480px) {
+      font-size: nth($font-sizes, 3);
     }
   }
 
   &_translateValue {
+    color: #fff5f2;
     &::placeholder {
-      font-size: nth($font-sizes, 3);
       color: rgba($color-orange-3, $alpha: 0.4);
     }
   }
 
-  &_btnsWrapper {
+  &_btnCardSide {
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    right: 4px;
+    opacity: 0.6;
+  }
+  &_btnEdit {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 4px;
+    opacity: 0.6;
   }
 }
 
 .card {
-  background-color: rgba($color: #fff, $alpha: 0.2);
+  background-color: rgba(#d7dbea, $alpha: 0.2);
 
   &_active {
     @extend .card;

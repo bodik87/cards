@@ -7,6 +7,7 @@ import {
   EDIT_CARD_VALUES,
 } from "../../assets/constants";
 import { updateActiveValueAC } from "../../store/reducers/actions";
+import { ClickIcon } from "../Icons/ClickIcon";
 import { EditIcon } from "../Icons/EditIcon";
 import { ModalDoubleInput } from "../Modals/ModalDoubleInput/ModalDoubleInput";
 import styles from "./Card.module.scss";
@@ -67,16 +68,18 @@ export const Card = ({ words, translates, index }) => {
             className={styles.card_wordValue}
             placeholder={ADD_NEW_WORD}
           />
-          <div className={styles.card_btnsWrapper}>
-            {words[index] && (
-              <div className={styles.btns_top} onClick={toggleCardSide} />
-            )}
-
-            <div onClick={toggleModalVisible}>
+          <div>
+            <div className={styles.card_btnEdit} onClick={toggleModalVisible}>
               <EditIcon width={18} height={18} />
             </div>
+            {words[index] && (
+              <div className={styles.card_btnCardSide} onClick={toggleCardSide}>
+                <ClickIcon width={18} height={18} />
+              </div>
+            )}
           </div>
         </div>
+
         <div className={backCardStyle}>
           <input
             disabled
@@ -85,14 +88,14 @@ export const Card = ({ words, translates, index }) => {
             className={styles.card_translateValue}
             placeholder={ADD_TRANSLATE}
           />
-          <div className={styles.card_btnsWrapper}>
-            {words[index] && (
-              <div className={styles.btns_top} onClick={toggleCardSide} />
-            )}
-            <div onClick={toggleModalVisible}>
-              <EditIcon width={18} height={18} />
-            </div>
+          <div className={styles.card_btnEdit} onClick={toggleModalVisible}>
+            <EditIcon width={18} height={18} />
           </div>
+          {words[index] && (
+            <div className={styles.card_btnCardSide} onClick={toggleCardSide}>
+              <ClickIcon width={18} height={18} />
+            </div>
+          )}
         </div>
       </div>
     </React.Fragment>
