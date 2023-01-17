@@ -1,12 +1,13 @@
 @import "../../assets/style";
 .panel {
   background: rgba($color-mainDark, $alpha: 0.8);
-  backdrop-filter: blur(12px);
+  // backdrop-filter: blur(12px);
   box-shadow: 5px 2px 7px 5px rgba(0, 0, 0, 0.3);
   padding: 12px 12px 18px 12px;
   margin: -5px 0 -5px 0;
   border-radius: 8px;
   border: 1px solid rgba($color: #fff, $alpha: 0.1);
+  z-index: 1;
   @media (max-width: 767px) {
     position: fixed;
     top: 0;
@@ -19,17 +20,10 @@
     align-items: center;
     flex-wrap: nowrap;
     border-radius: 0px;
-    padding: 6px 12px;
+    padding: 6px 60px 6px 12px;
     z-index: 4;
     border: none;
     border-bottom: 1px solid rgba($color: #fff, $alpha: 0.1);
-  }
-
-  &_right {
-    @media (max-width: 767px) {
-      display: flex;
-      gap: 12px;
-    }
   }
 
   &_categories {
@@ -52,14 +46,19 @@
 .burger {
   display: none;
   @media (max-width: 767px) {
+    cursor: pointer;
     display: block;
-    position: relative;
-    width: 40px;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 6;
   }
   &_icon {
-    position: absolute;
-    top: 0;
-    left: 0;
+    cursor: pointer;
+    display: block;
+    position: fixed;
+    top: 18px;
+    right: 18px;
     z-index: 6;
   }
 }
@@ -74,7 +73,7 @@
     align-items: center;
     padding-top: 100px;
     backdrop-filter: blur(12px);
-    background-color: rgba(black, $alpha: 0.8);
+    background-color: rgba(black, $alpha: 0.5);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     z-index: 5;

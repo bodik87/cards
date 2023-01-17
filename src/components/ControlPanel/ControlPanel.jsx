@@ -13,34 +13,27 @@ export const ControlPanel = () => {
   return (
     <React.Fragment>
       <div className={styles.panel}>
-        <div>
-          <Logo />
-          <div className={styles.panel_categories}>
-            <Categories />
-          </div>
+        <Logo />
+        <div className={styles.panel_categories}>
+          <Categories />
         </div>
-
-        <div className={styles.panel_right}>
-          <ControlButtons />
-          <div className={styles.burger}>
-            <div onClick={handleClick} className={styles.burger_icon}>
-              {!visible ? (
-                <BurgerIcon width={25} height={25} />
-              ) : (
-                <CloseIcon width={25} height={25} />
-              )}
-            </div>
-
-            <div
-              onClick={handleClick}
-              className={
-                !visible ? styles.burgerMenu : styles.burgerMenu_active
-              }
-            >
-              <Categories />
-            </div>
-          </div>
-        </div>
+        <ControlButtons />
+      </div>
+      <div
+        onClick={handleClick}
+        className={!visible ? styles.burgerMenu : styles.burgerMenu_active}
+      >
+        <Categories />
+      </div>
+      <div
+        onClick={handleClick}
+        className={!visible ? styles.burger : styles.burger_icon}
+      >
+        {!visible ? (
+          <BurgerIcon width={25} height={25} />
+        ) : (
+          <CloseIcon width={25} height={25} />
+        )}
       </div>
     </React.Fragment>
   );
